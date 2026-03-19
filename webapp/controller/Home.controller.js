@@ -11,109 +11,145 @@ sap.ui.define(
       "attendanceshabas.attendanceshabas.controller.Home",
       {
         onInit: function () {
+          var oHBox = this.getView().byId("circle-main-hbox");
+          this.oBundle = this.getOwnerComponent()
+            .getModel("i18n")
+            .getResourceBundle();
+          // הוספת Delegate שמזהה לחיצה (tap/click)
+          oHBox.addEventDelegate({
+            ontap: function (oEvent) {
+              // כאן נכנס הקוד שקורה בלחיצה
+              this.onHBoxPress(oEvent);
+            }.bind(this), // חשוב כדי לשמור על ה-Scope של ה-Controller
+          });
           this.getView().addEventDelegate(
             {
               onBeforeShow: jQuery.proxy(function (oEvent) {
                 this.onBeforeShow(oEvent);
               }),
             },
-            this
+            this,
           );
         },
 
         onBeforeShow: function (oEvent) {
-          this.oBundle = this.getOwnerComponent()
-            .getModel("i18n")
-            .getResourceBundle();
-          var currentDateDay = new Date()
-            .toLocaleDateString("he-IL")
-            .split(".")[0];
-          var currentDateMonth = new Date(
-            new Date().setMonth(new Date().getMonth())
-          )
-            .toLocaleDateString("he-IL")
-            .split(".")[1];
-          var currentDateYear = new Date()
-            .toLocaleDateString("he-IL")
-            .split(".")[2];
+          var oButton = this.byId("animButton"); // וודא שיש ID לכפתור ב-XML
 
-          if (currentDateMonth.length === 1) {
-            currentDateMonth = "0" + currentDateMonth;
-          }
-          var curMonthHeb = this.changeMonthToHeb(currentDateMonth);
-          this.getView()
-            .byId("calendar-date")
-            .setText(curMonthHeb + " " + currentDateYear);
-          let data = [
+          oButton.addEventDelegate(
             {
-              fullName: "אלי כהן",
-              empType: "שוטר",
-              city: "לוד",
-              workArea: "נגדים",
-              cardNumber: "05878913",
-              email: "eli@police.gov.il",
-              workSchedule: "שוטר 100%, 5 ימים",
+              onmousedown: function () {
+                // ברגע הלחיצה - מוסיפים את ה-class והוא מחליק ימינה
+                oButton.addStyleClass("buttonMovedRight");
+              },
+              onmouseup: function () {
+                // אופציונלי: אם רוצים שיחזור כשעוזבים את הלחיצה
+                oButton.removeStyleClass("buttonMovedRight");
+              },
             },
-          ];
+            this,
+          );
+          // this.oBundle = this.getOwnerComponent()
+          //   .getModel("i18n")
+          //   .getResourceBundle();
+          // var currentDateDay = new Date()
+          //   .toLocaleDateString("he-IL")
+          //   .split(".")[0];
+          // var currentDateMonth = new Date(
+          //   new Date().setMonth(new Date().getMonth())
+          // )
+          //   .toLocaleDateString("he-IL")
+          //   .split(".")[1];
+          // var currentDateYear = new Date()
+          //   .toLocaleDateString("he-IL")
+          //   .split(".")[2];
+          // if (currentDateMonth.length === 1) {
+          //   currentDateMonth = "0" + currentDateMonth;
+          // }
+          // var curMonthHeb = this.changeMonthToHeb(currentDateMonth);
+          // this.getView()
+          //   .byId("calendar-date")
+          //   .setText(curMonthHeb + " " + currentDateYear);
+          // let data = [
+          //   {
+          //     fullName: "אלי כהן",
+          //     empType: "שוטר",
+          //     city: "לוד",
+          //     workArea: "נגדים",
+          //     cardNumber: "05878913",
+          //     email: "eli@police.gov.il",
+          //     workSchedule: "שוטר 100%, 5 ימים",
+          //   },
+          // ];
+          // var oData = [
+          //   {
+          //     date: "2024-11-11",
+          //     enterTime: "09:00",
+          //     exitTime: "17:00",
+          //     totalHours: "8",
+          //     totalHoursNeto: "7.5",
+          //     certificates: "None",
+          //     absenceWithPayment: "No",
+          //     absenceWithoutPayment: "No",
+          //     globalAbsence: "No",
+          //     note: "Good performance",
+          //     requests: "N/A",
+          //   },
+          //   // Add more objects as needed
+          // ];
+          // var dates = [
+          //   {
+          //     name: "ינואר",
+          //   },
+          //   {
+          //     name: "פברואר",
+          //   },
+          //   {
+          //     name: "מרץ",
+          //   },
+          //   {
+          //     name: "אפריל",
+          //   },
+          //   {
+          //     name: "מאי",
+          //   },
+          //   {
+          //     name: "יוני",
+          //   },
+          //   {
+          //     name: "יולי",
+          //   },
+          //   {
+          //     name: "אוגוסט",
+          //   },
+          //   {
+          //     name: "ספטמבר",
+          //   },
+          //   {
+          //     name: "אוקטובר",
+          //   },
+          //   {
+          //     name: "נובמבר",
+          //   },
+          //   {
+          //     name: "דצמבר",
+          //   },
+          // ];
+          // this.getOwnerComponent().setModel(new JSONModel(dates), "Dates");
+          // this.getOwnerComponent().setModel(new JSONModel(oData), "oData");
+          // this.getOwnerComponent().setModel(new JSONModel(data), "EmpDetails");
+        },
+        onAnimatePress: function (oEvent) {
+          var oButton = oEvent.getSource();
 
-          var oData = [
-            {
-              date: "2024-11-11",
-              enterTime: "09:00",
-              exitTime: "17:00",
-              totalHours: "8",
-              totalHoursNeto: "7.5",
-              certificates: "None",
-              absenceWithPayment: "No",
-              absenceWithoutPayment: "No",
-              globalAbsence: "No",
-              note: "Good performance",
-              requests: "N/A",
-            },
-            // Add more objects as needed
-          ];
+          // הוספת ה-Class שמפעיל את הטרנספורמציה
+          oButton.addStyleClass("buttonMovedRight");
 
-          var dates = [
-            {
-              name: "ינואר",
-            },
-            {
-              name: "פברואר",
-            },
-            {
-              name: "מרץ",
-            },
-            {
-              name: "אפריל",
-            },
-            {
-              name: "מאי",
-            },
-            {
-              name: "יוני",
-            },
-            {
-              name: "יולי",
-            },
-            {
-              name: "אוגוסט",
-            },
-            {
-              name: "ספטמבר",
-            },
-            {
-              name: "אוקטובר",
-            },
-            {
-              name: "נובמבר",
-            },
-            {
-              name: "דצמבר",
-            },
-          ];
-          this.getOwnerComponent().setModel(new JSONModel(dates), "Dates");
-          this.getOwnerComponent().setModel(new JSONModel(oData), "oData");
-          this.getOwnerComponent().setModel(new JSONModel(data), "EmpDetails");
+          // אם רוצים שהכפתור יחזור אחרי שנייה, אפשר להשתמש ב-setTimeout
+          /*
+    setTimeout(function() {
+        oButton.removeStyleClass("buttonMovedRight");
+    }, 1000);
+    */
         },
         changeMonthToHeb: function (month) {
           switch (month) {
@@ -162,6 +198,34 @@ sap.ui.define(
               return this.oBundle.getText("December");
               break;
           }
+        },
+        onHBoxPress: function (oEvent) {
+          sap.m.MessageToast.show("ה-HBox נלחץ!");
+          var oHBox = this.getView().byId("hbox-circle");
+          var text = this.getView().byId("circle-enter");
+          // בדיקה אם הקלאס כבר קיים
+          if (oHBox.hasStyleClass("hbox-circle")) {
+            oHBox.removeStyleClass("hbox-circle"); // הסרה
+            oHBox.addStyleClass("hbox-circle-green");
+            this.getView().byId("hbox-clockTime").setVisible(true);
+            text.setText(this.oBundle.getText("exit"));
+          } else {
+            oHBox.removeStyleClass("hbox-circle-green");
+            this.getView().byId("hbox-clockTime").setVisible(false);
+            oHBox.addStyleClass("hbox-circle"); // הוספה
+            text.setText(this.oBundle.getText("enter"));
+          }
+        },
+        openMyMenu: async function () {
+          this.MyMenu = await this.loadFragment({
+            name: "attendanceshabas.attendanceshabas.fragments.MyMenu",
+          });
+          this.MyMenu.open();
+        },
+        closeMyMenu: function () {
+          this.MyMenu.close();
+          this.MyMenu.destroy();
+          this.MyMenu = null;
         },
         addCertificate: async function () {
           this.addCertificate = await this.loadFragment({
@@ -266,7 +330,7 @@ sap.ui.define(
           });
           this.openAttendanceUpdate.open();
         },
-      }
+      },
     );
-  }
+  },
 );

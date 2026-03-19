@@ -1,0 +1,107 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+>
+	<Dialog
+		id="menu-Dialog"
+		class="menu-Dialog"
+		stretch="true"
+		showHeader="false"
+	>
+		<VBox class="Menu-content">
+			<HBox
+				class="menu-header"
+				justifyContent="End"
+			>
+				<Button
+					class="close-menu"
+					icon="../css/images/close.svg"
+					press="closeMyMenu"
+				/>
+			</HBox>
+			<HBox class="menu-body">
+				<VBox
+					class="menu-body-vbox"
+					justifyContent="Center"
+				>
+					<HBox class="hbox-body-row">
+						<Text
+							class="list-txt"
+							text="{i18n>DailyReport}"
+						/>
+						<Image
+							class="list-image"
+							src="../css/images/Calendar.svg"
+						/>
+					</HBox>
+					<HBox class="hbox-body-row">
+						<Text
+							class="list-txt"
+							text="{i18n>MonthlyAttendance}"
+						/>
+						<Image
+							class="list-image"
+							src="../css/images/CalendarAtt.svg"
+						/>
+					</HBox>
+					<HBox class="hbox-body-row">
+						<Text
+							class="list-txt"
+							text="{i18n>AbsenceReport}"
+						/>
+						<Image
+							class="list-image"
+							src="../css/images/CalendarClose.svg"
+						/>
+					</HBox>
+					<HBox class="hbox-body-row">
+						<Text
+							class="list-txt"
+							text="{i18n>MyBalances}"
+						/>
+						<Image
+							class="list-image"
+							src="../css/images/CalendarPlus.svg"
+						/>
+					</HBox>
+					<HBox class="hbox-body-row">
+						<Text
+							class="list-txt"
+							text="{i18n>MyWorkArrangement}"
+						/>
+						<Image
+							class="list-image"
+							src="../css/images/CalendarList.svg"
+						/>
+					</HBox>
+				</VBox>
+			</HBox>
+			<HBox class="menu-footer">
+				<HBox width="20%">
+					<Image
+						class="image-panel"
+						src="../css/images/openPanel.svg"
+					/>
+				</HBox>
+				<VBox
+					width="80%"
+					justifyContent="SpaceBetween"
+				>
+					<HBox
+						class="menu-details"
+						justifyContent="SpaceAround"
+					>
+						<Text
+							class="image-txt"
+							text="{i18n>fullName}"
+						/>
+						<Image
+							class="image-menu"
+							src="../css/images/image.svg"
+						/>
+					</HBox>
+				</VBox>
+			</HBox>
+		</VBox>
+	</Dialog>
+</core:FragmentDefinition>

@@ -3,168 +3,52 @@
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core"
-    xmlns:table="sap.ui.table"
+
 >
+    <Page id="idPage" showHeader="false" class="mainPage">
     <!-- MAIN SCREEN -->
-    <VBox
-        id="homeContainer"
-        class="homeContainer"
-    >
-        <!-- TITLE CONTAINER -->
-        <core:Fragment
-            fragmentName="attendanceshabas.attendanceshabas.fragments.HeaderTitle"
-            type="XML"
-        />
-        <!-- EMP DETAILS HEADER -->
-        <core:Fragment
-            fragmentName="attendanceshabas.attendanceshabas.fragments.EmpDetails"
-            type="XML"
-        />
-        <!-- TABLE -->
-        <HBox
-            id="bodyHbox"
-            class="bodyHbox"
-        >
-            <!-- ICON TAB -->
-            <HBox class="iconTabHbox">
-                <IconTabBar
-                    id="icons"
-                    class="icons"
-                    select="switchTab"
-                    selectedKey="absence"
-                >
-                    <items>
-                        <IconTabFilter
-                            key="onlyCorrectionsinc"
-                            text="{i18n>onlyCorrectionsinc}"
-                            class="tabText"
-                        />
-                        <IconTabFilter
-                            key="absence"
-                            text="{i18n>allAbsence}"
-                            class="tabText"
-                        />                        
-                    </items>
-                </IconTabBar>
+
+       <VBox id="idVBox" class="mainContainer">
+                <!-- Header -->
+            <HBox id="idHBox" width="100%" height="10%" justifyContent="End" class="headerBar">
+                <Image id="menu" class="menu" src="../css/images/group.svg" press="openMyMenu" />
+                   <!-- <Image  src="../css/images/ring.svg" type="Transparent"/> -->
+             </HBox>
+             <HBox id="idBodyBox"  justifyContent="Center" height="100%">
+             <VBox
+               justifyContent="Start">
+                 
+            
+                 <HBox id="goodmorning" justifyContent="Center" width="100%">
+                 <Text class="goodDayN" text="{i18n>goodDayN}" />            
+                </HBox>         
+                
+                <HBox id="circle-main-hbox" class="circle-main-hbox" width="100%" justifyContent="Center">
+                    <HBox id="hbox-circle" class="hbox-circle">
+                        <VBox id="circle-vbox" justifyContent="Center">
+                          <Text class="circle-enterTime" text="{i18n>clockIn}" /> 
+                          <Text  id="circle-enter" class="circle-enter" text="{i18n>enter}" />   
+                        </VBox>
+                        
+                    </HBox>
+               </HBox>
+               <HBox id="hbox-clockTime" justifyContent="Center" visible="false">
+                <VBox >
+                    <Text class="clockenter-text" text="{i18n>clockenter}"/>
+                    <Text class="app-text" text="{i18n>location} {i18n>application}" />
+                </VBox>
+               </HBox>  
+             </VBox>
+             </HBox>    
+            <HBox id="idFooter">
+                <HBox class="footer-hbox">
+                      <HBox id="hbox-footer-body" class="hbox-footer-body">
+                        <Button id="animButton"  icon="../css/images/Navigation.svg" press=".onAnimatePress" class="moveableButton" ></Button>
+                        <Text class="footer-text" text="פירוט נוכחות חודשית" />
+                      </HBox>  
+                </HBox>
             </HBox>
-            <VBox
-                id="tableVbox"
-                class="tableVbox"
-                width="100%"
-            >
-                <HBox class="tbl">
-                    <Table items="{path: 'oData>/'}">
-                        <columns>
-                            <Column width="8vw" hAlign="Left">
-                                <Label text="{i18n>date}" />
-                            </Column>
-                            <Column
-                                minScreenWidth="Tablet"
-                                demandPopin="true"
-                                width="8vw"
-                                hAlign="Left"
-                            >
-                                <Label text="{i18n>enterTime}" />
-                            </Column>
-                            <Column
-                            width="8vw"
-                                minScreenWidth="Desktop"
-                                demandPopin="true"
-                                hAlign="Left"
-                            >
-                                <Label text="{i18n>exitTime}" />
-                            </Column>
-                            <Column
-                                minScreenWidth="Desktop"
-                                demandPopin="true"
-                                hAlign="Center"
-                            >
-                                <Label text="{i18n>actions}" />
-                            </Column>
-                            <Column hAlign="Left" width="7vw">
-                                <Label text="{i18n>totalHours}" />
-                            </Column>
-                            <Column hAlign="Left" width="8vw"> 
-                                <Label text="{i18n>totalHoursNeto}" />
-                            </Column>
-                            <Column hAlign="Left">
-                                <Label text="{i18n>certificates}" />
-                            </Column>
-                            <Column hAlign="Left" width="9vw">
-                                <Label text="{i18n>absenceWithPayment}" />
-                            </Column>
-                            <Column hAlign="Left" width="11vw">
-                                <Label text="{i18n>absenceWithoutPayment}" />
-                            </Column>
-                            <Column hAlign="Left" width="9vw">
-                                <Label text="{i18n>globalAbsence}" />
-                            </Column>
-                            <Column hAlign="Left">
-                                <Label text="{i18n>note}" />
-                            </Column>
-                            <Column hAlign="Left">
-                                <Label text="{i18n>requests}" />
-                            </Column>
-                        </columns>
-                        <items>
-                            <ColumnListItem vAlign="Middle">
-                                <cells>
-                                    <VBox >
-                                        <Text text="{oData>date}" />
-                                    </VBox>
-                                    <VBox >
-                                        <Text text="{oData>enterTime}" />
-                                    </VBox>
-                                    <VBox>
-                                        <Text text="{oData>exitTime}" />
-                                    </VBox>
-                                    <VBox>
-                                        <Image
-                                            id="ellipsisIcon"
-                                            class="ellipsisIcon"
-                                            src="css/images/ellipsis-h.svg"
-                                            lazyLoading="true"
-                                            press="actionsPopup"
-                                        />
-                                    </VBox>
-                                    <VBox>
-                                        <Text text="{oData>totalHours}" />
-                                    </VBox>
-                                    <VBox>
-                                        <Text text="{oData>totalHoursNeto}" />
-                                    </VBox>
-                                    <VBox>
-                                        <Text text="{oData>certificates}" />
-                                    </VBox>
-                                    <VBox>
-                                        <Text
-                                            text="{oData>absenceWithPayment}"
-                                        />
-                                    </VBox>
-                                    <VBox>
-                                        <Text
-                                            text="{oData>absenceWithoutPayment}"
-                                        />
-                                    </VBox> 
-                                    <VBox>
-                                        <Text text="{oData>globalAbsence}" />
-                                    </VBox>
-                                    <VBox>
-                                        <Text text="{oData>note}" />
-                                    </VBox>
-                                    <VBox>
-                                        <Text text="{oData>requests}" />
-                                    </VBox>
-                                </cells>
-                            </ColumnListItem>
-                        </items>
-                    </Table>
-                </HBox>
-                <HBox width="10%">
-                    <Text text="asasas" />
-                </HBox>
-            </VBox>
-        </HBox>
-    </VBox>
+               
+        </VBox>
+    </Page>
 </mvc:View>
