@@ -208,9 +208,12 @@
   width: 2rem;
   height: 2rem;
   aspect-ratio: 1/1;
-  border-radius: 1vh;
   left: 7vw;
   position: relative;
+  border-radius: 1rem;
+  border: 1px solid var(--Sky-Blue, #d7eafc);
+  background: var(--Pure-White, #fff);
+  box-shadow: 0 14px 36px 0 rgba(106, 168, 255, 0.16);
 }
 .menu-details {
   justify-content: end;
@@ -247,4 +250,61 @@
   display: flex;
   flex-direction: row;
   position: relative;
+}
+/* POUP Details */
+.details-content {
+  background-color: white;
+  height: 100%;
+}
+.header-details {
+  position: relative;
+  right: 3vw;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+}
+.details-image-txt {
+  color: var(--Text-Color, #27292b);
+  text-align: right;
+  font-family: Rubik;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  right: 4vw;
+  position: relative;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 4rem;
+}
+.app-details-closePanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.app-myDetails-body {
+  width: 100%;
+  padding: 1vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+.app-body-details-hbox {
+  width: 100%;
+  justify-content: space-between;
+  border-radius: 8px;
+  background: var(--Background-Blue, #eff7fe);
+  height: 6vh;
+  padding: 1vh;
+}
+.app-body-details-txt {
+  color: var(--Text-Color, #27292b);
+  text-align: right;
+  font-family: Rubik;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

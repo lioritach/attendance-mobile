@@ -330,6 +330,17 @@ sap.ui.define(
           });
           this.openAttendanceUpdate.open();
         },
+        openDetailsEmp: async function () {
+          this.MyMenu = await this.loadFragment({
+            name: "attendanceshabas.attendanceshabas.fragments.MyDetails",
+          });
+          this.MyMenu.open();
+        },
+        closeDetailsEmp: async function () {
+          this.MyMenu.close();
+          this.MyMenu.destroy();
+          this.MyMenu = null;
+        },
       },
     );
   },

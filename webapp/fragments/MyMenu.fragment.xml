@@ -81,6 +81,7 @@
 					<Image
 						class="image-panel"
 						src="../css/images/openPanel.svg"
+						press="openDetailsEmp"
 					/>
 				</HBox>
 				<VBox
