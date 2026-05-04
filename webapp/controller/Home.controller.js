@@ -30,6 +30,13 @@ sap.ui.define(
             },
             this,
           );
+          const oModel = new JSONModel({
+            isCheckedIn: false,
+            lastTime: "",
+            location: ""
+          });
+
+          this.getView().setModel(oModel, "clockModel")
         },
 
         onBeforeShow: function (oEvent) {
@@ -207,8 +214,44 @@ sap.ui.define(
           if (oHBox.hasStyleClass("hbox-circle")) {
             oHBox.removeStyleClass("hbox-circle"); // הסרה
             oHBox.addStyleClass("hbox-circle-green");
-            this.getView().byId("hbox-clockTime").setVisible(true);
             text.setText(this.oBundle.getText("exit"));
+            const oModel = this.getView().getModel("clockModel");
+
+            const bCheckedIn = oModel.getProperty("/isCheckedIn");
+            const now = new Date();
+            const sTime = now.toLocaleTimeString("he-IL", {
+              hour: "2-digit",
+              minute: "2-digit"
+            });
+            // קבלת מיקום
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(
+                function (position) {
+                  const lat = position.coords.latitude;
+                  const lon = position.coords.longitude;
+
+                  const locationText = `Lat: ${lat}, Lon: ${lon}`;
+
+                  oModel.setProperty("/lastTime", sTime);
+                  oModel.setProperty("/location", locationText);
+
+                }.bind(this),
+                function (error) {
+                  oModel.setProperty("/lastTime", sTime);
+                  oModel.setProperty("/location", "לא הצלחנו להביא מיקום");
+                }.bind(this)
+              );
+            } else {
+              oModel.setProperty("/lastTime", sTime);
+              oModel.setProperty("/location", "המכשיר לא תומך במיקום");
+            }
+
+            this.getView().byId("hbox-clockTime").setVisible(true);
+
+
+            oModel.setProperty("/isCheckedIn", !bCheckedIn);
+            oModel.setProperty("/lastTime", sTime);
+            this.getView().byId("hbox-clockTime").setVisible(true);
           } else {
             oHBox.removeStyleClass("hbox-circle-green");
             this.getView().byId("hbox-clockTime").setVisible(false);
@@ -341,6 +384,15 @@ sap.ui.define(
           this.MyMenu.destroy();
           this.MyMenu = null;
         },
+
+        onMenuItemPress: function (oEvent) {
+          const sRoute = oEvent.getSource().data("route");
+
+          const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+          oRouter.navTo(sRoute);
+
+          this.closeMyMenu();
+        }
       },
     );
   },

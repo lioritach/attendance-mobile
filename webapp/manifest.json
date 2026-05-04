@@ -78,9 +78,19 @@
       },
       "routes": [
         {
-          "name": "RouteHome",
-          "pattern": ":?query:",
-          "target": ["TargetHome"]
+          "pattern": "",
+          "name": "Home",
+          "target": "TargetHome"
+        },
+        {
+          "pattern": "DailyReport",
+          "name": "DailyReport",
+          "target": "DailyReport"
+        },
+        {
+          "pattern": "m",
+          "name": "m",
+          "target": "m"
         }
       ],
       "targets": {
@@ -90,6 +100,12 @@
           "clearControlAggregation": false,
           "viewId": "Home",
           "viewName": "Home"
+        },
+        "DailyReport": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "DailyReport",
+          "viewName": "DailyReport"
         }
       }
     },
