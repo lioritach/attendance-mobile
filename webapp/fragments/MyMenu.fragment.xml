@@ -137,7 +137,9 @@
                     type="Active"
                     press="onMenuItemPress">
                     <customData>
-                        <core:CustomData key="route" value="DailyReport"/>
+                        <core:CustomData
+            key="fragment"
+            value="SettingsFragment"/>
                     </customData>
                 </StandardListItem>
 

@@ -365,3 +365,22 @@
   background: transparent !important;
   box-shadow: none !important;
 }
+
+.menu-list {
+  bottom: 11vh;
+}
+
+.menu-list .sapMLIBSelected {
+    background: white !important;
+    border-radius: 12px;
+}
+
+.menu-list .sapMLIBSelected .sapMSLITitle {
+    color: black !important;
+    font-weight: 600;
+}
+
+.menu-list .sapMLIB:active {
+    background: white !important;
+    opacity: 0.9;
+}
