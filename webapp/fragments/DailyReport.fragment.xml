@@ -1,0 +1,56 @@
+
+
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        id="dailyReport-Dialog"
+        class="reportType-Dialog"
+        stretch="true"
+        showHeader="false"
+    >
+        <VBox class="reportType-content">
+            <!-- Header -->
+            <HBox class="reportType-header" justifyContent="End">
+                <Button
+                    class="close-reportType"
+                    icon="../css/images/Navigation.svg"
+                    press="closeDailyReport"
+                />
+                <Title class="app-reportType-title" text="{i18n>DailyReport}"></Title>
+                
+            </HBox>
+
+
+            <HBox class="reportType-body">
+                <VBox class="reportType-vbox">
+                 	<DatePicker
+                        id="reportType-Date"
+                        placeholder="{i18n>enterDate}"
+                        class="reportType-Date sapUiSmallMarginBottom" />          	
+                    <Panel expandable="true" headerText="{i18n>chooseReason}" width="auto" class="reportType-Date-panel sapUiResponsiveMargin">
+                        <content>
+                            <Text text="dsdsds" />
+                        </content>
+                    </Panel>
+                    <Panel expandable="true" headerText="{i18n>addComment}" width="auto" class="sapUiResponsiveMargin">
+                        <content>
+                            <Text text="dsdsds" />
+                        </content>
+                    </Panel>
+                </VBox>
+               
+            
+            </HBox>
+
+            <HBox class="reportType-footer">
+            
+            
+            </HBox>
+
+     
+
+        </VBox>
+    </Dialog>
+</core:FragmentDefinition>

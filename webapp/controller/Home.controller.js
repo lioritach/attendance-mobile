@@ -387,13 +387,43 @@ sap.ui.define(
 
         onMenuItemPress: function (oEvent) {
           const sRoute = oEvent.getSource().data("route");
+          const title = oEvent.getSource().getTitle();
+          switch (title) {
+            case this.oBundle.getText("DailyReport"):
+              this.openDailyReport();
 
+
+
+
+              break;
+
+            case this.oBundle.getText("MonthlyAttendance"):
+              console.log("MonthlyAttendance");
+              break;
+
+            case this.oBundle.getText("AbsenceReport"):
+              console.log("AbsenceReport");
+              break;
+
+          }
           const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
           oRouter.navTo(sRoute);
 
           this.closeMyMenu();
-        }
+        },
+        openDailyReport: async function () {
+          this.MyDailyReport = await this.loadFragment({
+            name: "attendanceshabas.attendanceshabas.fragments.DailyReport",
+          });
+          this.MyDailyReport.open();
+        },
+        closeDailyReport: async function () {
+          this.MyDailyReport.close();
+          this.MyDailyReport.destroy();
+          this.MyDailyReport = null;
+        },
       },
+
     );
   },
 );

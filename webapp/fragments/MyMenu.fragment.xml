@@ -138,9 +138,9 @@
                     press="onMenuItemPress">
                     <customData>
                         <core:CustomData
-            key="fragment"
-            value="SettingsFragment"/>
-                    </customData>
+							key="fragment"
+							value="SettingsFragment"/>
+                    	</customData>
                 </StandardListItem>
 
                 <StandardListItem
