@@ -1,0 +1,56 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:cust="attendanceshabas.attendanceshabas.controller">
+    <VBox class="mainContainer">
+        <HBox
+            width="100%"
+            class="MobileHeaderBar" alignItems="Center">
+            <Button
+                class="MobileButtonMenu sapUiMediumMarginEnd"
+                icon="sap-icon://navigation-left-arrow"
+                press="onBack"/> 
+            <Label text="{i18n>DailyReport}" class="MobileMediumText"/>
+            <Label text=""/>
+        </HBox> 
+
+        <VBox height="100%" class="sapUiMediumMarginTop sapUiContentPadding">
+            <Panel 
+            expandable="true" 
+            headerText="{clockModel>/DailyReport/RemarkDef}" 
+            width="auto" 
+            class="sapUiResponsiveMargin MobilePanel">
+                <content>
+                    <TextArea class="MobileTextArea" width="100%" rows="6" value="{clockModel>/DailyReport/Remark}"/>
+                </content>
+            </Panel>
+            <Panel 
+            expandable="true" 
+            headerText="{clockModel>/DailyReport/ReasonDef}" 
+            width="auto" 
+            class="sapUiResponsiveMargin MobilePanel">
+                <content>
+                    <List inset="false" 
+                    mode="SingleSelectMaster" 
+                    items="{clockModel>/DailyReport/ReasonList}"
+                    selectionChange="onMenuItemPress"
+                    class="sapUiMediumMarginTop">
+
+                        <StandardListItem
+                        class="MobileMenuRow"
+                            title="{clockModel>Text}">
+                        </StandardListItem>
+                    </List>
+                </content>
+            </Panel>
+        </VBox>
+
+        <HBox class="MobileFooterBox">
+            <HBox class="MobileFooterBodySmall" justifyContent="End" alignItems="Center">
+                <Button text="{i18n>Approve}" 
+                class="MobileApproveButton"
+                enabled="{clockModel>/DailyReport/Approve}"/>
+            </HBox>   
+        </HBox>            
+    </VBox>
+</core:FragmentDefinition>

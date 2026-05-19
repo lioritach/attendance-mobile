@@ -1,0 +1,110 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <VBox class="mainContainer">
+            <!-- Header -->
+            <HBox
+                width="100%"
+                class="MobileHeaderBar"
+                justifyContent="SpaceBetween">
+                    <Button
+                        class="MobileButtonMenu"
+                        icon="sap-icon://menu2"
+                        press="openMyMenu"/>   
+                    <Button
+                        class="MobileButtonMenu"
+                        icon="sap-icon://bell"
+                        press="openNotifications"/>                        
+            </HBox>
+            <HBox
+                justifyContent="Center"
+                height="100%"
+            >
+                <VBox justifyContent="Start" renderType="Bare">
+                    <HBox
+                        justifyContent="Center"
+                        width="100%"
+                    >
+                        <Text
+                            class="goodDayN"
+                            text="{i18n>goodDayN}"
+                        />
+                    </HBox>
+                    <List swipe=".MobClockSwipe"
+                    mode="SingleSelectMaster"
+		            includeItemInSelection="true"
+                    class="MainScreenClock">
+                        <items>
+                            <CustomListItem>
+                                <VBox justifyContent="Center" alignItems="Center"> 
+                                    <List swipe=".MobClockSwipe"
+                                    selectionChange=".MobClockPress"
+                                    mode="SingleSelectMaster"
+                                    includeItemInSelection="true"
+                                    class="MainScreenClock">
+                                        <items>
+                                            <CustomListItem>
+                                                <HBox id="clockCircle"
+                                                    class="MobileClockCircle"
+                                                    justifyContent="Center" alignItems="Center">
+                                                    <HBox
+                                                        class="MobileClockCircleInner"
+                                                        justifyContent="Center" alignItems="Center">
+                                                        <VBox justifyContent="Center" visible="{= ${clockModel>/showEntryScreen} ? false:true}">
+                                                            <Text
+                                                                class="circle-enterTime"
+                                                                text="{i18n>clockIn}"/>
+                                                            <Text
+                                                                class="circle-enter"
+                                                                text="{i18n>exit}"/>
+                                                        </VBox>
+                                                        <VBox justifyContent="Center" visible="{clockModel>/showEntryScreen}">
+                                                            <Text
+                                                                class="circle-enterTime"
+                                                                text="{i18n>clockIn}"/>
+                                                            <Text
+                                                                class="circle-enter"
+                                                                text="{i18n>enter}"/>
+                                                        </VBox>
+                                                    </HBox>
+                                                </HBox>
+                                            </CustomListItem>
+                                        </items>
+                                    </List>
+                                <HBox justifyContent="Center" visible="{clockModel>/isCheckedIn}">
+                                    <VBox>
+                                        <!-- <Text
+                                            class="clockenter-text"
+                                            text="{i18n>clockenter}"
+                                        /> -->
+                                        <Text
+                                            text="{i18n>EntryHour} {clockModel>/lastTime}"
+                                            class="clockenter-text sapUiMediumMarginTop"/>
+                                        <Text
+                                            class="app-text"
+                                            text="מיקום: {clockModel>/location}"/>
+                                    </VBox>
+                                </HBox>
+                                </VBox>
+                            </CustomListItem>
+                        </items>
+                    </List>
+                </VBox>
+            </HBox>
+            <HBox>
+                <HBox class="MobileFooterBox" justifyContent="Center" alignItems="Center">
+                    <HBox class="MobileFooterBody" justifyContent="Center" alignItems="Center">
+                        <Button
+                            icon="sap-icon://arrow-left"
+                            press=".onAnimatePress"
+                            class="MobileMoveableButton"
+                        />
+                        <Text
+                            class="footer-text"
+                            text="פירוט נוכחות חודשית"
+                        />
+                    </HBox>
+                </HBox>
+            </HBox>
+        </VBox>
+</core:FragmentDefinition>

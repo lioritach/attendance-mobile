@@ -14,7 +14,17 @@
       "id": "@sap/generator-fiori:basic",
       "version": "1.14.4",
       "toolsId": "a3be9271-3da2-4668-b70b-dec1f0cb43b7"
-    }
+    },
+    "dataSources": {
+			"mainService": {
+				"uri": "/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
   },
   "sap.ui": {
     "technology": "UI5",
@@ -52,6 +62,9 @@
       "cozy": true
     },
     "models": {
+      "": {
+				"dataSource": "mainService"
+			},
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
@@ -64,7 +77,10 @@
         {
           "uri": "css/style.css"
         }
-      ]
+      ],
+      "configuration": {
+          "densityAware": false
+      }
     },
     "routing": {
       "config": {
@@ -78,19 +94,9 @@
       },
       "routes": [
         {
-          "pattern": "",
-          "name": "Home",
-          "target": "TargetHome"
-        },
-        {
-          "pattern": "DailyReport",
-          "name": "DailyReport",
-          "target": "DailyReport"
-        },
-        {
-          "pattern": "m",
-          "name": "m",
-          "target": "m"
+          "name": "RouteHome",
+          "pattern": ":?query:",
+          "target": ["TargetHome"]
         }
       ],
       "targets": {
@@ -100,12 +106,6 @@
           "clearControlAggregation": false,
           "viewId": "Home",
           "viewName": "Home"
-        },
-        "DailyReport": {
-          "viewType": "XML",
-          "transition": "slide",
-          "viewId": "DailyReport",
-          "viewName": "DailyReport"
         }
       }
     },

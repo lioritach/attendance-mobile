@@ -1,0 +1,253 @@
+@import url("Elements/Button.css");
+@import url("Elements/Panel.css");
+@import url("Elements/TextArea.css");
+
+.MainScreenClock{
+    height: 100%;
+}
+.sapMListBGSolid .sapMLIB:not(.sapMLIBActive):not(.sapMLIBSelected):not(:hover){
+    background: none;
+}
+@media all and (orientation:portrait) {
+    .MainScreenClock .sapMLIB{
+        background: transparent;
+        height: 100%;
+        border-bottom: none;
+        align-items: baseline;
+        margin-top: 12vw;
+    }
+    .MainScreenClock .sapMListUl{
+        height: 100%;
+    }
+    .MobileClockCircle{
+        width: 80vw;
+        height: calc(80vw); 
+        border-radius: 50%;
+        border-width: 7.5vw;
+        border-style: solid;
+        border-color: #D7EAFC;
+        color: #F0F5FB;
+    }
+    .MobileClockCircleExit{
+        width: 80vw;
+        height: calc(80vw); 
+        border-radius: 50%;
+        border-width: 7.5vw;
+        border-style: solid;
+        border-color: #BFFFEA;
+        color: #F0F5FB;
+    }
+
+    .MobileClockCircleInner{
+        width: 65vw;
+        height: calc(65vw); 
+        border-radius: 50%;
+        background-color: #FFFFFF;
+        box-shadow: 0px 4px 34px #728AA766;
+    }
+
+}
+@media all and (orientation:landscape) {
+    .MainScreenClock .sapMLIB{
+        background: transparent;
+        height: 100%;
+        border-bottom: none;
+        align-items: baseline;
+        margin-top: 3vh;
+    }
+    .MainScreenClock .sapMListUl{
+        height: 100%;
+    }
+    .MobileClockCircle{
+        width: 80vh;
+        height: calc(80vh); 
+        border-radius: 50%;
+        border-width: 7.5vh;
+        border-style: solid;
+        border-color: #D7EAFC;
+        color: #F0F5FB;
+    }
+    .MobileClockCircleExit{
+        width: 80vh;
+        height: calc(80vh); 
+        border-radius: 50%;
+        border-width: 7.5vh;
+        border-style: solid;
+        border-color: #BFFFEA;
+        color: #F0F5FB;
+    }
+    .MobileClockCircleInner{
+        width: 65vh;
+        height: calc(65vh); 
+        border-radius: 50%;
+        background-color: #FFFFFF;
+        box-shadow: 0px 4px 34px #728AA766;
+    }
+}
+
+    .MobileFooterBox{
+        border-top-left-radius: 2.2rem;
+        border-top-right-radius: 2.2rem;
+        background-color: #324153;
+        width: 100%;
+    }
+    .MobileFooterBody{
+        width: 100%;
+        height: 5rem;
+        border-radius: 1rem;
+        background: linear-gradient(90deg, rgba(239, 247, 255, 0.1) 0%, rgba(249, 252, 255, 0.1) 100%);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1.6rem;
+        padding: 1.1rem;
+    }
+    .MobileFooterBodySmall{
+        width: 100%;
+        height: 5rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    .MobileMoveableButton{
+        transition: transform 0.7s ease-in-out;
+        display: inline-block;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .MobileMoveableButton .sapMIBar.sapMTB-Info-CTX .sapMBtn, 
+    .MobileMoveableButton .sapUiSizeCompact .sapMBtn, 
+    .MobileMoveableButton .sapMBtn{
+        height: 3rem;
+    }
+    .MobileMoveableButton .sapMIBar.sapMTB-Info-CTX .sapMBtnIcon.sapUiIcon, 
+    .MobileMoveableButton .sapUiSizeCompact .sapMBtnIcon.sapUiIcon, 
+    .MobileMoveableButton .sapMBtnIcon.sapUiIcon {
+        font-size: 1.5rem;
+        color: #324153;
+        line-height: 3rem;
+        width: 3rem;
+    }
+    
+    .MobileMoveableButton .sapMBtnInner {
+        border-radius: 50%;
+        width: 3rem;
+        height: 3rem;
+    }
+    .MobileMoveableButton.sapMBtn:focus-visible>.sapMFocusable:not(.sapMBadgeIndicator)::before, html.sap-desktop .sapMBtn:focus>.sapMFocusable:not(.sapMBadgeIndicator)::before{
+        border: none;
+    }
+
+    .MobileHeaderBar{
+        padding: 1rem;
+    }
+
+    .MobileMenuRow.sapMLIB{
+        justify-content: flex-end;
+        background: transparent;
+        border: none;
+    }
+    .MobileMenuRow .sapUiSizeCompact .sapMSLITitle, .sapUiSizeCompact .sapMSLITitleOnly, .sapMSLITitleOnly, .sapMSLITitle {
+        font-size: 1.2rem;
+        font-family: 'Rubik';
+        font-weight: 500;
+        color: #27292B;
+    }
+    
+
+
+    .MobileMenuFooter{
+        background-color: #FFFFFF;
+        border-top-left-radius: 2rem;
+        border-top-right-radius: 2rem;
+        height: 16%;
+        width: 100%;
+        padding-top: 1rem;
+        padding-right: 2rem;
+        padding-left: 2rem;
+    }
+    .MobileDetailsDialogBody{
+        background-color: white;
+        border-top-left-radius: 2rem;
+        border-top-right-radius: 2rem;
+        padding-top: 1rem;
+    }
+
+    .MobileDetailsDialog .sapUiSizeCompact.sapMDialog>.sapMDialogSection,
+    .sapUiSizeCompact .sapMDialog>.sapMDialogSection,
+    .sapMDialog>.sapMDialogSection{
+        align-content: end;
+        background-color: transparent !important;
+    }
+    
+    .MobileDetailsDialog .sapMDialogScroll, .sapMDialogScrollCont.sapMDialogStretchContent {
+        height: auto !important;
+    } 
+    .MobileDetailsDialog.sapMDialog.sapUiPopupWithPadding:not(.sapUiNoContentPadding) .sapMDialogScrollCont{
+        padding: unset;
+    } 
+
+    .MobileDetailsImage{
+        width: 2rem;
+        height: 2rem;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        border: 1px solid var(--Sky-Blue, #d7eafc);
+        background: var(--Pure-White, #fff);
+        box-shadow: 0 14px 36px 0 rgba(106, 168, 255, 0.16);
+    }
+    .MobileDetailsItem{
+        width: 100%;
+        justify-content: space-between;
+        border-radius: 0.5rem;
+        background: var(--Background-Blue, #eff7fe);
+        height: 3rem;
+        padding: 1rem;
+    }
+    .MobileDetailsItemDescriptionText{
+        color: var(--Text-Color, #27292b);
+        text-align: right;
+        font-family: Rubik;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    .MobileDetailsItemValueText{
+        color: var(--Text-Color, #27292b);
+        text-align: right;
+        font-family: Rubik;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .MobileMediumText {
+        color: var(--Text-Color, #27292b);
+        text-align: right;
+        font-family: Rubik;
+        font-size: 1.25rem;
+        font-style: normal;
+        font-weight: 500;
+    }
+    .MobileApproveButton .sapMBtnInner{
+        color: var(--Text-Color, #27292b);
+        font-family: Rubik;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 500;
+        border-radius: 1rem;
+        min-width: 8rem;
+    }
+    
+
+    .MobileSelect{
+        border-radius: .75rem;
+        height: 2.75rem;;
+    }
+    .MobileSelect.sapMSlt:not(.sapMSltIconOnly){
+        border-radius: .75rem;
+    }
+    .MobileSelect.sapMSlt>.sapMSltArrow {
+        line-height: 2.75rem;
+    }

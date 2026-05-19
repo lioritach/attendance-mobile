@@ -6,8 +6,7 @@
 		id="details-Dialog"
 		class="details-Dialog"
 		stretch="true"
-		showHeader="false"
-	>
+		showHeader="false">
 		<VBox
 			class="details-content"
 			height="100%"
