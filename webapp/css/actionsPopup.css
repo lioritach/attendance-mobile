@@ -1,9 +1,0 @@
-.actionsPopoverHbox {
-    border-bottom: 1px solid;
-    display: flex;
-    justify-content: center
-}
-
-.actionsPopoverBtns .sapMBtnInner.sapMBtnText  {
-    border: none;
-}
