@@ -1,109 +1,100 @@
 <core:FragmentDefinition
     xmlns="sap.m"
-    xmlns:core="sap.ui.core"
->
-    <Dialog
-        id="menu-Dialog"
-        class="menu-Dialog"
-        stretch="true"
-        showHeader="false"
-    >
-        <VBox class="Menu-content">
+    xmlns:core="sap.ui.core">
+        <VBox class="mainContainer">
             <!-- Header -->
-            <HBox class="menu-header" justifyContent="End">
-                <Button
-                    class="close-menu"
-                    icon="../css/images/close.svg"
-                    press="closeMyMenu"
-                />
-            </HBox>
-
+            <HBox
+                width="100%"
+                class="MobileHeaderBar"
+                justifyContent="Start">
+                    <Button
+                        class="MobileButtonMenu"
+                        icon="sap-icon://decline"
+                        press="onBack"/>  
+                                
+            </HBox>            
             <!-- Body тн List -->
-            <List class="menu-list" inset="false" mode="None">
+            <VBox height="100%">
+            <List inset="false" 
+                mode="SingleSelectMaster" 
+                selectionChange="onMenuItemPress"
+                class="sapUiMediumMarginTop">
 
                 <StandardListItem
-				class="menu-row"
+				class="MobileMenuRow"
                     title="{i18n>DailyReport}"
                     icon="../css/images/Calendar.svg"
-                    type="Active"
-                    press="onMenuItemPress">
+                    iconDensityAware="false">
                     <customData>
-                        <core:CustomData
-            key="fragment"
-            value="SettingsFragment"/>
+                        <core:CustomData key="route" value="DailyReport"/>
                     </customData>
                 </StandardListItem>
 
                 <StandardListItem
-				class="menu-row"
+				class="MobileMenuRow"
                     title="{i18n>MonthlyAttendance}"
                     icon="../css/images/CalendarAtt.svg"
-                    type="Active"
-                    press="onMenuItemPress">
+                    iconDensityAware="false">
                     <customData>
                         <core:CustomData key="route" value="monthlyAttendance"/>
                     </customData>
                 </StandardListItem>
 
                 <StandardListItem
-				class="menu-row"
+				class="MobileMenuRow"
                     title="{i18n>AbsenceReport}"
                     icon="../css/images/CalendarClose.svg"
-                    type="Active"
-                    press="onMenuItemPress">
+                    iconDensityAware="false">
                     <customData>
                         <core:CustomData key="route" value="absenceReport"/>
                     </customData>
                 </StandardListItem>
 
                 <StandardListItem
-				class="menu-row"
+				class="MobileMenuRow"
                     title="{i18n>MyBalances}"
                     icon="../css/images/CalendarPlus.svg"
-                    type="Active"
-                    press="onMenuItemPress">
+                    iconDensityAware="false">
                     <customData>
                         <core:CustomData key="route" value="balances"/>
                     </customData>
                 </StandardListItem>
 
                 <StandardListItem
-				class="menu-row"
+				class="MobileMenuRow"
                     title="{i18n>MyWorkArrangement}"
                     icon="../css/images/CalendarList.svg"
-                    type="Active"
-                    press="onMenuItemPress">
+                    iconDensityAware="false">
                     <customData>
                         <core:CustomData key="route" value="workArrangement"/>
                     </customData>
                 </StandardListItem>
 
             </List>
-
+            </VBox>
             <!-- Footer -->
-            <HBox class="menu-footer">
-                <HBox width="20%">
-                    <Image
-                        class="image-panel"
-                        src="../css/images/openPanel.svg"
-                        press="openDetailsEmp"
-                    />
-                </HBox>
-
-                <VBox width="80%" justifyContent="SpaceBetween">
-                    <HBox class="menu-details" justifyContent="SpaceAround">
-                        <Text
-                            class="image-txt"
-                            text="{i18n>fullName}"
-                        />
+            <HBox justifyContent="Center" alignItems="Center" class="MobileMenuFooter">
+                <VBox width="80%">
+                    <HBox alignItems="Center">
                         <Image
-                            class="image-menu"
+                            class="image-menu sapUiSmallMarginEnd"
                             src="../css/images/image.svg"
                         />
+                        <Text
+                            class="MobileMediumText"
+                            text="{i18n>fullName}"
+                        />                        
                     </HBox>
                 </VBox>
+                <HBox width="20%" justifyContent="End">
+                    <Image
+                        class="MobileDetailsImage"
+                        src="../css/images/openPanel.svg"
+                        press="openDetailsEmp"/>
+                </HBox>
+
+                
             </HBox>
 
         </VBox>
-    </Dialog>
 </core:FragmentDefinition>

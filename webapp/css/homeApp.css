@@ -1,5 +1,9 @@
-.mainPage {
-  background-color: #d7eafc !important;
+.mainPage{
+  /*background-image: linear-gradient(to bottom left, #88C5FF3C, #88C5FF28) !important;*/
+  background: #FFFFFF;
+  background-image: linear-gradient(225deg,rgba(136, 197, 255, 0.6) 0%, rgba(136, 197, 255, 0.2) 50%, rgba(136, 197, 255, 0.4) 100%);
+  -webkit-backdrop-filter: blur(400px);
+  backdrop-filter: blur(400px);
 }
 
 .menu {
@@ -125,9 +129,8 @@
   line-height: normal;
 }
 
-.arrow-btn {}
 
-/* המצב ההתחלתי של הכפתור */
+/*                        */
 .moveableButton {
   transition: transform 0.7s ease-in-out;
   display: inline-block;
@@ -150,10 +153,10 @@
   bottom: 1vh;
 }
 
-/* המחלקה שנוסיף בזמן הלחיצה */
+/*                           */
 .buttonMovedRight {
   transform: translateX(13rem);
-  /* הזזה של 100 פיקסלים ימינה */
+  /*         100               */
 }
 
 /* POPUP MENU */
@@ -270,7 +273,6 @@
   background: var(--Pure-White, #fff);
 }
 
-.list-image {}
 
 .list-txt {
   color: var(--Text-Color, #27292b);
@@ -291,6 +293,7 @@
 .details-content {
   background-color: white;
   height: 100%;
+  width: 100%;
 }
 
 .header-details {
@@ -383,4 +386,9 @@
 .menu-list .sapMLIB:active {
     background: white !important;
     opacity: 0.9;
+}
+
+
+.MainScreenClock .sapMLIB{
+    background: transparent;
 }

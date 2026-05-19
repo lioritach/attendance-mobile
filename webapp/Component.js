@@ -12,6 +12,7 @@ sap.ui.define([
 
         return UIComponent.extend("attendanceshabas.attendanceshabas.Component", {
             metadata: {
+                interfaces: ["sap.ui.core.IAsyncContentCreation"],
                 manifest: "json"
             },
 
@@ -29,6 +30,8 @@ sap.ui.define([
 
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
+
+                
             }
         });
     }

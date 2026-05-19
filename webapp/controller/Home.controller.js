@@ -1,42 +1,43 @@
 sap.ui.define(
   [
+    "attendanceshabas/attendanceshabas/controller/BaseController",
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "sap/ui/core/Fragment",
   ],
-  function (Controller, JSONModel, Fragment) {
+  function (BaseController, Controller, JSONModel, Fragment) {
     "use strict";
 
-    return Controller.extend(
+    return BaseController.extend(
       "attendanceshabas.attendanceshabas.controller.Home",
       {
         onInit: function () {
-          var oHBox = this.getView().byId("circle-main-hbox");
+          this._Page = this.getView().getContent()[0];
+          
+          
           this.oBundle = this.getOwnerComponent()
             .getModel("i18n")
             .getResourceBundle();
-          // הוספת Delegate שמזהה לחיצה (tap/click)
-          oHBox.addEventDelegate({
-            ontap: function (oEvent) {
-              // כאן נכנס הקוד שקורה בלחיצה
-              this.onHBoxPress(oEvent);
-            }.bind(this), // חשוב כדי לשמור על ה-Scope של ה-Controller
-          });
-          this.getView().addEventDelegate(
-            {
-              onBeforeShow: jQuery.proxy(function (oEvent) {
-                this.onBeforeShow(oEvent);
-              }),
-            },
-            this,
-          );
+
           const oModel = new JSONModel({
             isCheckedIn: false,
+            showEntryScreen: true,
             lastTime: "",
-            location: ""
+            location: "",
+            navigation: [],
+            DailyReport: {"Remark": "", 
+                          "RemarkDef": this.oBundle.getText("DailyRemark"),
+                          "Reason": "", 
+                          "ReasonDef": this.oBundle.getText("DailyReasonSelect"),
+                          "ReasonList": [{Reason: "1", Text: "First"},
+                                        {Reason: "2", Text: "Second"},
+                                        {Reason: "3", Text: "Third"}],
+                          "Approve": false}
           });
 
-          this.getView().setModel(oModel, "clockModel")
+          this.getView().setModel(oModel, "clockModel");
+          this.getView().getModel("clockModel").refresh(false);
+          this.loadFragments(this, "MobileMainScreen", this._Page);
         },
 
         onBeforeShow: function (oEvent) {
@@ -55,108 +56,20 @@ sap.ui.define(
             },
             this,
           );
-          // this.oBundle = this.getOwnerComponent()
-          //   .getModel("i18n")
-          //   .getResourceBundle();
-          // var currentDateDay = new Date()
-          //   .toLocaleDateString("he-IL")
-          //   .split(".")[0];
-          // var currentDateMonth = new Date(
-          //   new Date().setMonth(new Date().getMonth())
-          // )
-          //   .toLocaleDateString("he-IL")
-          //   .split(".")[1];
-          // var currentDateYear = new Date()
-          //   .toLocaleDateString("he-IL")
-          //   .split(".")[2];
-          // if (currentDateMonth.length === 1) {
-          //   currentDateMonth = "0" + currentDateMonth;
-          // }
-          // var curMonthHeb = this.changeMonthToHeb(currentDateMonth);
-          // this.getView()
-          //   .byId("calendar-date")
-          //   .setText(curMonthHeb + " " + currentDateYear);
-          // let data = [
-          //   {
-          //     fullName: "אלי כהן",
-          //     empType: "שוטר",
-          //     city: "לוד",
-          //     workArea: "נגדים",
-          //     cardNumber: "05878913",
-          //     email: "eli@police.gov.il",
-          //     workSchedule: "שוטר 100%, 5 ימים",
-          //   },
-          // ];
-          // var oData = [
-          //   {
-          //     date: "2024-11-11",
-          //     enterTime: "09:00",
-          //     exitTime: "17:00",
-          //     totalHours: "8",
-          //     totalHoursNeto: "7.5",
-          //     certificates: "None",
-          //     absenceWithPayment: "No",
-          //     absenceWithoutPayment: "No",
-          //     globalAbsence: "No",
-          //     note: "Good performance",
-          //     requests: "N/A",
-          //   },
-          //   // Add more objects as needed
-          // ];
-          // var dates = [
-          //   {
-          //     name: "ינואר",
-          //   },
-          //   {
-          //     name: "פברואר",
-          //   },
-          //   {
-          //     name: "מרץ",
-          //   },
-          //   {
-          //     name: "אפריל",
-          //   },
-          //   {
-          //     name: "מאי",
-          //   },
-          //   {
-          //     name: "יוני",
-          //   },
-          //   {
-          //     name: "יולי",
-          //   },
-          //   {
-          //     name: "אוגוסט",
-          //   },
-          //   {
-          //     name: "ספטמבר",
-          //   },
-          //   {
-          //     name: "אוקטובר",
-          //   },
-          //   {
-          //     name: "נובמבר",
-          //   },
-          //   {
-          //     name: "דצמבר",
-          //   },
-          // ];
-          // this.getOwnerComponent().setModel(new JSONModel(dates), "Dates");
-          // this.getOwnerComponent().setModel(new JSONModel(oData), "oData");
-          // this.getOwnerComponent().setModel(new JSONModel(data), "EmpDetails");
         },
         onAnimatePress: function (oEvent) {
-          var oButton = oEvent.getSource();
+          this.loadFragments(this, "monthlyAttendance", this._Page);
+          //var oButton = oEvent.getSource();
 
           // הוספת ה-Class שמפעיל את הטרנספורמציה
-          oButton.addStyleClass("buttonMovedRight");
+          //oButton.addStyleClass("buttonMovedRight");
 
           // אם רוצים שהכפתור יחזור אחרי שנייה, אפשר להשתמש ב-setTimeout
           /*
-    setTimeout(function() {
-        oButton.removeStyleClass("buttonMovedRight");
-    }, 1000);
-    */
+        setTimeout(function() {
+            oButton.removeStyleClass("buttonMovedRight");
+        }, 1000);
+        */
         },
         changeMonthToHeb: function (month) {
           switch (month) {
@@ -260,15 +173,17 @@ sap.ui.define(
           }
         },
         openMyMenu: async function () {
-          this.MyMenu = await this.loadFragment({
-            name: "attendanceshabas.attendanceshabas.fragments.MyMenu",
-          });
-          this.MyMenu.open();
+          this.loadFragments(this, "MyMenu", this._Page);
+          //this.MyMenu = await this.loadFragment({
+          //  name: "attendanceshabas.attendanceshabas.fragments.MyMenu",
+          //});
+          //this.MyMenu.open();
         },
         closeMyMenu: function () {
-          this.MyMenu.close();
-          this.MyMenu.destroy();
-          this.MyMenu = null;
+          this.loadFragments(this, "MobileMainScreen", this._Page);
+          //this.MyMenu.close();
+          //this.MyMenu.destroy();
+          //this.MyMenu = null;
         },
         addCertificate: async function () {
           this.addCertificate = await this.loadFragment({
@@ -374,8 +289,13 @@ sap.ui.define(
           this.openAttendanceUpdate.open();
         },
         openDetailsEmp: async function () {
+          if (this.getOwnerComponent().getModel("device").getData().system.phone){
+            var name = "attendanceshabas.attendanceshabas.fragments.Mobile.MyDetails";
+          }else{
+            name = "attendanceshabas.attendanceshabas.fragments.MyDetails";
+          }
           this.MyMenu = await this.loadFragment({
-            name: "attendanceshabas.attendanceshabas.fragments.MyDetails",
+            name: name
           });
           this.MyMenu.open();
         },
@@ -386,12 +306,84 @@ sap.ui.define(
         },
 
         onMenuItemPress: function (oEvent) {
-          const sRoute = oEvent.getSource().data("route");
+          oEvent.getSource().removeSelections();
+          const sRoute = oEvent.getParameter("listItem").data("route");
 
-          const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-          oRouter.navTo(sRoute);
+          this.loadFragments(this, sRoute, this._Page);
+          //const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+          //oRouter.navTo(sRoute);
 
-          this.closeMyMenu();
+          //this.closeMyMenu();
+        },
+
+//         _
+//        | |
+//        |_|
+//        /_\    \ | /
+//      .-"""------.----.
+//      |          U    |
+//      |               |
+//      | ====o======== |
+//      | ============= |
+//      |               |
+//      |_______________|
+//      | ________GF337 |
+//      ||   Welcome   ||
+//      ||             ||
+//      ||_____________||
+//      |__.---"""---.__|
+//      |---------------|
+//      |[Yes][(|)][ No]|
+//      | ___  ___  ___ |
+//      |[<-'][CLR][.->]|
+//      | ___  ___  ___ |
+//      |[1__][2__][3__]|
+//      | ___  ___  ___ |
+//      |[4__][5__][6__]|
+//      | ___  ___  ___ |
+//      |[7__][8__][9__]|
+//      | ___  ___  ___ |
+//      |[*__][0__][#__]|
+//      `--------------'
+//      {__|""|_______'-
+//      `---------------'        
+
+        MobClockPress: function(oEvent){
+          oEvent.getSource().removeSelections();
+
+          
+
+          var oModel = this.getView().getModel("clockModel");
+          if (oModel.getProperty("/showEntryScreen")){
+            var entry = true;
+          }else{
+            entry = false;
+          }
+          const now = new Date();
+          const sTime = now.toLocaleTimeString("he-IL", {
+            hour: "2-digit",
+            minute: "2-digit"
+          });
+          oModel.setProperty("/lastTime", sTime);      
+          oModel.setProperty("/isCheckedIn", true);  
+
+          this.MobSwitchClockScreen();
+        },
+        MobSwitchClockScreen(){
+          var oModel = this.getView().getModel("clockModel");
+          var circle = this.getView().byId("clockCircle");
+          if (oModel.getProperty("/showEntryScreen")){
+            circle.removeStyleClass("MobileClockCircle");
+            circle.addStyleClass("MobileClockCircleExit");
+            oModel.setProperty("/showEntryScreen", false);
+          }else{
+            circle.removeStyleClass("MobileClockCircleExit");
+            circle.addStyleClass("MobileClockCircle");
+            oModel.setProperty("/showEntryScreen", true);
+          }
+        },
+        MobClockSwipe: function(oEvent){
+          this.MobSwitchClockScreen();
         }
       },
     );

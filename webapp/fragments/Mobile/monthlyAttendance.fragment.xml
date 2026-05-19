@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <VBox>
+        <HBox
+            width="100%"
+            class="MobileHeaderBar"
+            justifyContent="SpaceBetween">
+                <Button
+                    class="MobileButtonMenu"
+                    icon="../css/images/CalendarAtt.svg"/> 
+                <Label text="{i18n>MonthlyAttendance}"/>
+                <Button
+                    class="MobileButtonMenu"
+                    icon="sap-icon://navigation-right-arrow"
+                    press="onBack"/>     
+            </HBox>         
+    </VBox>
+</core:FragmentDefinition>
