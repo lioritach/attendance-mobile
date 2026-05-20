@@ -406,10 +406,10 @@ sap.ui.define(
               break;
 
           }
-          const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-          oRouter.navTo(sRoute);
+          // const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+          // oRouter.navTo(sRoute);
 
-          this.closeMyMenu();
+          // this.closeMyMenu();
         },
         openDailyReport: async function () {
           this.MyDailyReport = await this.loadFragment({

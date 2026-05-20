@@ -12,43 +12,56 @@
     >
         <VBox class="reportType-content">
             <!-- Header -->
-            <HBox class="reportType-header" justifyContent="End">
-                <Button
-                    class="close-reportType"
-                    icon="../css/images/Navigation.svg"
-                    press="closeDailyReport"
-                />
-                <Title class="app-reportType-title" text="{i18n>DailyReport}"></Title>
+            <HBox class="reportType-content-hbox">
+                <VBox class="reportType-content-vbox" >
+                <HBox class="reportType-header" justifyContent="End">
+                    <Button
+                        class="close-reportType"
+                        icon="../css/images/Navigation.svg"
+                        press="closeDailyReport"
+                    />
+                    <Title class="app-reportType-title" text="{i18n>DailyReport}"></Title>
+                    
+                </HBox>
+
+
+                <HBox class="reportType-body">
+                    <VBox class="reportType-vbox">
+                        <DatePicker
+                            id="reportType-Date"
+                            placeholder="{i18n>enterDate}"
+                            class="reportType-Date " />          	
+                      
+                        <Panel expandable="true" headerText="{i18n>addComment}" width="auto"  class="reportType-Date-panel">
+                            <content>
+                               <TextArea class="reportType-Date-txtArea"></TextArea>
+                            </content>
+                        </Panel>
+                        <InputListItem class="reportType-listItem" label="{i18n>chooseReason}">
+                            <Select>
+                                <core:Item key="1" text="שכחתי תג" />
+                                <core:Item key="2" text="יציאה בתפקיד" />
+                               
+                            </Select>
+                        </InputListItem>
+                        <!-- <Panel expandable="true" headerText="{i18n>chooseReason}" width="auto" class="reportType-Date-panel sapUiResponsiveMargin">
+                            <content>
+                            <TextArea class="reportType-Date-txtArea"></TextArea>
+                            </content>
+                        </Panel> -->
+                    </VBox>
                 
-            </HBox>
-
-
-            <HBox class="reportType-body">
-                <VBox class="reportType-vbox">
-                 	<DatePicker
-                        id="reportType-Date"
-                        placeholder="{i18n>enterDate}"
-                        class="reportType-Date sapUiSmallMarginBottom" />          	
-                    <Panel expandable="true" headerText="{i18n>chooseReason}" width="auto" class="reportType-Date-panel sapUiResponsiveMargin">
-                        <content>
-                            <Text text="dsdsds" />
-                        </content>
-                    </Panel>
-                    <Panel expandable="true" headerText="{i18n>addComment}" width="auto" class="sapUiResponsiveMargin">
-                        <content>
-                            <Text text="dsdsds" />
-                        </content>
-                    </Panel>
+                </HBox>
                 </VBox>
-               
-            
             </HBox>
 
-            <HBox class="reportType-footer">
-            
-            
-            </HBox>
+            <HBox>
+                <HBox class="reportType-footer">
 
+                    <Button class="reportType-footer-btn" text="{i18n>accept}"></Button>
+                
+                </HBox>
+             </HBox>
      
 
         </VBox>
