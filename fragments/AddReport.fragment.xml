@@ -1,0 +1,40 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" >
+    <Dialog  id="addReport-Dialog" class="addReport-Dialog">
+    <customHeader>
+    <Bar>
+        <contentRight>
+            <Button icon="sap-icon://decline" press="closeReport"/>
+        </contentRight>
+        <contentLeft>
+        <Title text="{i18n>addReport}"/>
+        </contentLeft>
+    </Bar>
+    </customHeader>
+        <VBox  class="addCertificatesContainer">
+            <HBox  class="absenceTypeAddCertificates">
+                <Text class="addCertificateTexts" text="{i18n>typeReport}" />
+                <ComboBox placeholder="{i18n>fillTypeReport}"/>
+            </HBox>
+            <HBox  class="absenceTypeAddCertificates">
+                <Text class="addCertificateTexts" text="{i18n>reasonReport}" />
+                <ComboBox />
+            </HBox>
+             <HBox  class="absenceTypeAddCertificates">
+                <Text class="addCertificateTexts" text="{i18n>popupDate}" />
+                <DatePicker />
+            </HBox>
+            <HBox  class="absenceTypeAddCertificates">
+                <Text class="addCertificateTexts" text="{i18n>popupTime}" />
+                <TimePicker />
+            </HBox>
+
+            <HBox class="noteAddCertificates">
+                <Label class="addCertificateTexts" text="{i18n>note}"/>
+                <TextArea class="noteTextArea" placeholder="{i18n>notePlaceholder}" />
+            </HBox>
+        </VBox>
+        <endButton>
+            <Button id="closeAddCertificateBtn" class="closeAddCertificateBtn" text="{i18n>close}" press="closeAddCertificate"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

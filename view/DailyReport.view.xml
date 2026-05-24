@@ -1,0 +1,19 @@
+<mvc:View
+    controllerName="attendanceshabas.attendanceshabas.controller.DailyReport"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+>
+    <!-- MAIN SCREEN -->
+    <VBox>
+        <HBox>
+            <Image
+                class="image-panel"
+                src="../css/images/Calendar.svg"
+            />
+            <Text text="hi" />
+        </HBox>
+    </VBox>
+</mvc:View>

@@ -1,0 +1,351 @@
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  padding: 0.4rem;
+  background-color: white;
+  border-bottom: 1px solid #2452c824;
+}
+
+.titleVbox {
+  margin-right: 1vw;
+}
+
+.titleHeaderText {
+  font-size: 1.2rem;
+
+  color: #49a2f0;
+
+  font-weight: bold;
+
+  font-family: sans-serif;
+}
+
+.empDetailsContainer {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+}
+
+.homeContainer {
+  width: 100%;
+  background-color: white;
+}
+
+.empDetailsHeader {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  height: 5rem;
+  gap: 1rem;
+  align-items: center;
+}
+
+.imageIcon {
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+}
+
+.fullNameTitleHbox,
+.empTypeTitleVbox,
+.workScheduleTitleVbox,
+.cityTitleVbox,
+.workAreaTitleVbox,
+.cardNumberTitleVbox,
+.emailTitleVbox {
+  text-align: right;
+}
+
+.fullNameValueVBox,
+.empTypeValueVbox,
+.workScheduleTitleVbox,
+.cityValueVbox,
+.workAreaValueVbox,
+.cardNumberValueVbox,
+.emailValueVbox {
+  text-align: center;
+}
+
+.fullNameTitleHbox,
+.empTypeTitleVbox,
+.workScheduleTitleVbox,
+.cityTitleVbox,
+.workAreaTitleVbox,
+.cardNumberTitleVbox,
+.emailTitleVbox {
+  text-align: right;
+  color: #212d39;
+  opacity: 0.6;
+  letter-spacing: 0.32px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+}
+.fullNameTitle,
+.empTypeTitle,
+.workScheduleTitle,
+.cityTitle,
+.emailTitle {
+  font-size: 1rem;
+}
+
+.btnsHeader {
+  gap: 2rem;
+  margin: 1.5rem 0 0 1rem;
+}
+
+.sapUiTableColHdrCnt {
+  direction: rtl;
+}
+
+.sapUiTableCell {
+  border-left: 0.0625rem solid #e5e5e5;
+  border-right: none;
+}
+
+.bodyHbox {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.tableVbox {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  padding-right: 2.3vw;
+}
+
+.tbl {
+  max-width: 88%;
+  /* margin-right: 0.5rem; */
+  direction: rtl;
+  /* margin-left: 11rem; */
+  /* flex-direction: row; */
+}
+
+.iconsTab {
+  background: none;
+  width: 25rem;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.leftContainerVbox {
+  display: flex;
+  align-items: center;
+  width: 15%;
+}
+
+.leftContainerApprove {
+  flex-direction: row-reverse;
+  gap: 3rem;
+  align-items: center;
+  background: #b1d4ff;
+  width: 90%;
+  height: 34px;
+  border-radius: 17px;
+}
+
+.leftContainerApproveIconHbox {
+  border: 1px solid black;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  right: 7px;
+}
+
+.acceptIcon {
+  font-family: SAP-icons;
+  position: absolute;
+  left: 2px;
+  top: 1px;
+}
+
+.leftContainerApproveText {
+  text-align: center;
+}
+
+.leftContainerMain {
+  border: 1px;
+  flex-direction: column;
+  width: 100%;
+  height: 50%;
+}
+
+.approvalBox {
+  background-color: #e0ebf5; /* Light blue background */
+  padding: 10px;
+  border-radius: 8px;
+  width: 250px;
+}
+
+.approvalHeader {
+  background-color: #5cacee; /* Blue header background */
+  padding: 5px 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.headerText {
+  color: white;
+  font-weight: bold;
+}
+
+.headerIcon {
+  color: white;
+}
+
+.approvalContent {
+  padding: 10px 0;
+}
+
+.iconContainer {
+  position: relative;
+  text-align: center;
+}
+
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #2dca73; /* Green circular border */
+  background-color: #ffffff; /* White background inside the circle */
+}
+
+.approvalIcon {
+  color: #2dca73; /* Main icon color */
+  font-size: 1.8rem;
+}
+
+.statusIcon {
+  color: #2dca73; /* Green color for the approval icon */
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 1rem;
+}
+
+.itemLabel {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.iconTabHbox {
+  justify-content: end;
+}
+
+.sapMITH {
+  background: none;
+  box-shadow: none;
+}
+
+.ellipsisIcon {
+  cursor: pointer;
+}
+
+.sapUiTableCell:focus::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  outline: none !important;
+}
+
+.sapMITBContent {
+  padding: 0.2rem !important;
+}
+
+/* Grid container for the items */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-rows: repeat(4, auto); /* 4 rows */
+  gap: 1rem; /* Spacing between grid items */
+  padding: 1rem; /* Padding inside the grid */
+}
+
+/* Each grid item */
+.grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9; /* Light background for cards */
+  border: 1px solid #ccc; /* Border around cards */
+  border-radius: 8px; /* Rounded corners */
+  padding: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for cards */
+  text-align: center;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s; /* Smooth hover effect */
+  cursor: pointer; /* Indicate clickable items */
+}
+
+/* Hover effect */
+.grid-item:hover {
+  background-color: #e0e0e0; /* Slightly darker background on hover */
+  transform: scale(1.05); /* Slightly enlarge item on hover */
+}
+
+/* Active (clicked) state */
+.grid-item:active,
+.monthsBtn .sapMBtnInner:active {
+  background-color: #d0d0d0; /* Darker background when clicked */
+  transform: scale(1); /* Reset scale on click */
+}
+
+.monthsBtn .sapMBtnInner {
+  border: none !important;
+  background: none !important;
+}
+.calendar-date .sapMBtnInner.sapMBtnText,
+.calendar-date .sapMBtnInner.sapMBtnText:hover {
+  background-color: #2452c8;
+  font-size: 1.2rem;
+  color: white !important;
+  letter-spacing: 0;
+  height: 2rem;
+  text-align: center;
+  align-items: center;
+}
+.calendar-date .sapMBtnIcon,
+.calendar-date .sapMBtnIcon:hover {
+  color: white !important;
+}
+.fullNameValue,
+.emailValue,
+.cardNumberValue,
+.workAreaValue,
+.cityValue,
+.workScheduleValue,
+.empTypeValue {
+  font-size: 1rem;
+}
+.subHeader-details {
+  padding-right: 0.5rem;
+}
+.sapMITBContent {
+  border-bottom: none;
+  background-color: white;
+}
+.sapMITBFilter .sapMITBText .sapMITHTextContent {
+  font-size: 1rem;
+}
+.action-popups-btn .sapMBtnInner {
+  background-color: white;
+  border: none !important;
+  width: 100%;
+}
+.action-popups-btn .sapMBtnContent {
+  font-size: 1rem;
+}
+.addReport-Dialog .sapMDialogTitleGroup {
+  direction: ltr;
+}

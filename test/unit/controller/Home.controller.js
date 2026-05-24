@@ -1,0 +1,2 @@
+sap.ui.define(["attendanceshabas/attendanceshabas/controller/Home.controller"],function(t){"use strict";QUnit.module("Home Controller");QUnit.test("I should test the Home controller",function(e){var n=new t;n.onInit();e.ok(n)})});
+//# sourceMappingURL=Home.controller.js.map

@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" >
+    <HBox id="titleContainer" class="titleContainer">
+        <!-- LEFT CONTAINER -->
+        <VBox class="calendarContainer">
+            <Button id="calendar-date" class="calendar-date" icon="sap-icon://calendar" press="onMonthsPress"/>
+        </VBox>
+        <!-- RIGHT CONTAINER -->
+        <VBox class="titleVbox">
+            <Text class="titleHeaderText" text="{i18n>title}" />
+        </VBox>
+    </HBox>
+</core:FragmentDefinition>

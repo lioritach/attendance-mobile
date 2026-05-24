@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <ResponsivePopover
+        id="monthsPopover"
+        title="חודשים"
+        class="sapUiContentPadding"
+        placement="Bottom">
+        <content>
+            <!-- Grid Container -->
+            <ScrollContainer width="100%" height="auto" vertical="true" horizontal="false">
+                <VBox class="grid-container" items="{Dates>/}" >
+                    <VBox class="grid-item">
+                        <Button class="monthsBtn" text="{Dates>name}" />
+                    </VBox>
+                </VBox>
+            </ScrollContainer>
+        </content>
+    </ResponsivePopover>
+</core:FragmentDefinition>

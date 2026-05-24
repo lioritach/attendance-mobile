@@ -1,0 +1,581 @@
+.mainPage {
+  background-color: #d7eafc !important;
+}
+
+.menu {
+  height: 6rem;
+  width: 6rem;
+}
+
+.goodDayN {
+  font-size: 2rem;
+  font-family: 'Rubik';
+
+}
+
+.mainContainer {
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.hbox-circle-green {
+  background-image: url(../css/images/Ellipsegreen.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  width: 14.75rem;
+  height: 14.75rem;
+  box-shadow: 0px 4px 194px 0px #FFFFFF;
+
+  margin-top: 10rem;
+}
+
+.hbox-circle {
+  background-image: url(../css/images/Ellipse.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  width: 14.75rem;
+  height: 14.75rem;
+  box-shadow: 0px 4px 194px 0px #FFFFFF;
+  margin-top: 10rem;
+}
+
+.circle-enterTime {
+  color: #8da7c6;
+  color: var(--Hint-Text, #627d9e);
+  font-family: Rubik;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.circle-enter {
+  color: #223b59;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--Text-Color, #27292b);
+  font-family: Rubik;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.footer-hbox {
+  background-image: url("../css/images/Rectangle.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 10rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3.5rem;
+}
+
+.clockenter-text {
+  display: flex;
+  justify-content: center;
+  color: #27292b;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.app-text {
+  display: flex;
+  justify-content: center;
+  color: #27292b;
+  font-size: 1rem;
+}
+
+.hbox-footer-body {
+  width: 90%;
+  height: 70%;
+  border-radius: 1rem;
+  background: linear-gradient(90deg,
+      rgba(239, 247, 255, 0.1) 0%,
+      rgba(249, 252, 255, 0.1) 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem;
+}
+
+.footer-text {
+  color: var(--Pure-White, #fff);
+  text-align: right;
+
+  /* Menu items */
+  font-family: Rubik;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.arrow-btn {}
+
+/* המצב ההתחלתי של הכפתור */
+.moveableButton {
+  transition: transform 0.7s ease-in-out;
+  display: inline-block;
+  background-image: url("../css/images/arrow.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* width: 2.88rem; */
+  /* height: 2.88rem; */
+}
+
+.moveableButton .sapMBtnInner {
+  border-radius: 3vh;
+  width: 2.88rem;
+  height: 2.88rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  bottom: 1vh;
+}
+
+/* המחלקה שנוסיף בזמן הלחיצה */
+.buttonMovedRight {
+  transform: translateX(13rem);
+  /* הזזה של 100 פיקסלים ימינה */
+}
+
+/* POPUP MENU */
+.sapMDialog>.sapMDialogSection {
+  background-color: #d7eafc !important;
+}
+
+.Menu-content {
+  height: 100%;
+  justify-content: space-between;
+}
+
+.menu-header {
+  height: 10%;
+}
+
+.menu-body {
+  height: 70%;
+  width: 100%;
+  /* justify-content: space-around; */
+}
+
+.menu-body-vbox {
+  width: 100%;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  height: 50vh;
+}
+
+.close-menu .sapMBtnInner {
+  border-radius: 3vh;
+  width: 2.7rem;
+  height: 2.7rem;
+  display: flex;
+  align-items: center;
+  right: 2vw;
+  top: 1vh;
+  border: 1px solid white;
+}
+
+.menu-footer {
+  background-image: url("../css/images/RectangleMenu.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* height: 10rem; */
+  height: 16%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3.5rem;
+  justify-content: space-between;
+}
+
+.image-menu {
+  width: 70px;
+  height: 70px;
+  aspect-ratio: 1/1;
+}
+
+.image-txt {
+  color: var(--Text-Color, #27292b);
+  text-align: right;
+
+  /* Small Title */
+  font-family: Rubik;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  right: 4vw;
+  position: relative;
+}
+
+.image-panel {
+  width: 2rem;
+  height: 2rem;
+  aspect-ratio: 1/1;
+  left: 7vw;
+  position: relative;
+  border-radius: 1rem;
+  border: 1px solid var(--Sky-Blue, #d7eafc);
+  background: var(--Pure-White, #fff);
+  box-shadow: 0 14px 36px 0 rgba(106, 168, 255, 0.16);
+}
+
+.menu-details {
+  justify-content: end;
+  position: relative;
+  right: 3vw;
+  /* display: flex; */
+  align-items: center;
+}
+
+.hbox-body-row {
+  justify-content: end;
+  border-radius: 0.5rem;
+  /* background: var(--Pure-White, #fff); */
+  width: 80%;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  padding: 3vw;
+}
+
+.hbox-body-row:hover {
+  background: var(--Pure-White, #fff);
+}
+
+
+.list-txt {
+  color: var(--Text-Color, #27292b);
+  text-align: right;
+  /* Menu items */
+  font-family: Rubik;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  right: 2vw;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+/* POUP Details */
+.details-content {
+  background-color: white;
+  height: 100%;
+}
+
+.header-details {
+  position: relative;
+  right: 3vw;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+}
+
+.details-image-txt {
+  color: var(--Text-Color, #27292b);
+  text-align: right;
+  font-family: Rubik;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  right: 4vw;
+  position: relative;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 4rem;
+}
+
+.app-details-closePanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.app-myDetails-body {
+  width: 100%;
+  padding: 1vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.app-body-details-hbox {
+  width: 100%;
+  justify-content: space-between;
+  border-radius: 8px;
+  background: var(--Background-Blue, #eff7fe);
+  height: 6vh;
+  padding: 1vh;
+}
+
+.app-body-details-txt {
+  color: var(--Text-Color, #27292b);
+  text-align: right;
+  font-family: Rubik;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* NEW */
+
+
+
+.menu-row {
+    width: 83vw;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    direction: rtl;
+    background: transparent !important;
+    box-shadow: none !important;
+    /* background-color: white !important; */
+    border-radius: 7vh;
+    height: 7vh !important;
+    color: #223B59;
+    font-family: Rubik;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.menu-row .sapMLIBTypeActive {
+  width: 83vw;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    direction: rtl;
+    background: transparent !important;
+    box-shadow: none !important;
+    background-color: white !important;
+    border-radius: 5vh;
+    height: 7vh !important;
+      color: #223B59;
+    font-family: Rubik;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.menu-row>div>img{
+  height: 1.5rem;
+}
+
+.menu-list {
+  bottom: 11vh;
+}
+
+.menu-list .sapMLIBSelected {
+    background: white !important;
+    border-radius: 12px;
+}
+
+.menu-list .sapMLIBSelected .sapMSLITitle {
+    color: black !important;
+    font-weight: 600;
+}
+
+.menu-list .sapMLIB:active {
+    background: white !important;
+    opacity: 0.9;
+}
+.menu-list>ul{
+      position: relative;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+}
+
+.reportType-header{
+      width: 100%;
+      height: 10vh;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1rem;
+      direction: rtl;
+      padding-right: 2vh;
+      background: transparent !important;
+      box-shadow: none !important;
+      /* background-color: white !important; */
+      color: #223B59;
+      font-family: Rubik;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      display: flex;
+      flex-direction: row;
+}
+.close-reportType{
+  height: 3rem !important;
+  width: 3rem;
+}
+.close-reportType .sapMBtnInner{
+  height: 3rem !important;
+  width: 3rem;
+  border-radius: 4vh !important;
+  text-align: center;
+  align-items: center;
+}
+.app-reportType-title{
+      color: #223B59;
+    font-family: Rubik;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.reportType-body{
+  border-top: 1px solid #fff;
+    direction: rtl;
+    display: flex;
+    flex-direction: row;
+}
+
+.reportType-vbox{
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  align-items: center;
+  /* width: 21rem;
+    height: 3rem;
+    border-radius: 8px;
+    background: #FDFEFF;
+    box-shadow: 0 10px 44px 0 rgba(136, 197, 255, 0.20); */
+  width: 100%;
+  height:100% !important;
+  direction: rtl;
+  padding: 2vh;
+}
+
+.reportType-Date .sapMInputBaseContentWrapper{
+    /* display: flex;
+    flex-direction: column; */
+    gap: 0vh;
+    align-items: center;
+    width: 23rem !important;
+    height: 3rem !important;
+    border-radius: 8px;
+    background: #FDFEFF;
+    box-shadow: 0 10px 44px 0 rgba(136, 197, 255, 0.20);
+}
+.reportType-Date .sapMInputBaseIconContainer>span{
+  width: 2rem;   
+  height: 2.5625rem; 
+  line-height: 2.625rem !important;
+}
+.reportType-Date{
+       height: 3rem !important;
+}
+.reportType-Date-panel .sapMPanelHeadingDiv{
+  direction: ltr;
+}
+.reportType-Date-panel .sapMPanelWrappingDiv .sapMPanelWrappingDivExpanded{
+    direction: ltr;
+}
+.reportType-Date-panel .sapMPanelHdr{direction: rtl;align-items: center;width: 20rem !important;height: 5rem !important;border-radius: 8px;background: #FDFEFF;display: flex;font-family: Rubik;font-weight: 500;font-size: 1rem;letter-spacing: 0%;text-align: right;padding-right: 7vw;}
+
+.reportType-Date-panel .sapMPanelWrappingDiv .sapUiIcon {
+     height: 2rem !important;
+     width: 2rem;
+     border-radius: 4vh !important;
+     border: 1px solid #d9d9d9;
+     left: 2vw;
+     text-align: center;
+     color: #000000ba;
+     line-height: 2rem !important;
+     direction: rtl;
+}
+.reportType-Date-txtArea{
+  width: 20rem;
+  height: 10rem !important;
+  opacity: 1;
+  gap: 8px;
+}
+.reportType-footer{
+  width: 100%;
+  height: 7rem;
+  angle: 0 deg;
+  opacity: 1;
+  border-top-width: 2px;
+  background-color: var(--Primary-Navy, #324153);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 6vw;
+}
+.reportType-content{
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+}
+.reportType-content-vbox{
+       height: 100%;
+       width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+.reportType-footer-btn .sapMBtnInner {
+  width: 9rem;
+  height: 3rem !important;
+  angle: 0 deg;
+  opacity: 1;
+  border-radius: 68px;
+  gap: 10px;
+  padding-top: 16px;
+  padding-right: 28px;
+  padding-bottom: 16px;
+  padding-left: 28px;
+  background-color: #3E5066;
+}
+
+.reportType-footer-btn .sapMBtnContent{
+  font-family: Rubik;
+font-weight: 500;
+font-style: Medium;
+font-size: 1rem;
+leading-trim: NONE;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: right;
+color:#627D9E;
+
+}

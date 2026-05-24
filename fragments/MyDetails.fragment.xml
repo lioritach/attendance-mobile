@@ -1,0 +1,131 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+>
+	<Dialog
+		id="details-Dialog"
+		class="details-Dialog"
+		stretch="true"
+		showHeader="false"
+	>
+		<VBox
+			class="details-content"
+			height="100%"
+		>
+			<HBox
+				class="header-details"
+				justifyContent="SpaceAround"
+			>
+				<VBox
+					height="100%"
+					class="app-details-closePanel"
+				>
+					<Image
+						class="image-panel"
+						src="../css/images/closePanel.svg"
+						press="closeDetailsEmp"
+					/>
+				</VBox>
+				<VBox height="100%">
+					<HBox>
+						<Text
+							class="details-image-txt"
+							text="{i18n>fullName}"
+						/>
+						<Image
+							class="image-menu"
+							src="../css/images/image.svg"
+						/>
+					</HBox>
+				</VBox>
+			</HBox>
+			<VBox class="app-myDetails-body">
+				<HBox class="app-body-details-hbox">
+					<VBox justifyContent="Center">
+						<Text
+							class="app-body-details-txt"
+							text="00787135"
+						/>
+					</VBox>
+					<VBox justifyContent="Center">
+						<Text
+							class="app-body-details-txt"
+							text="{i18n>EmployeeNumber}"
+						/>
+					</VBox>
+				</HBox>
+				<HBox class="app-body-details-hbox">
+					<VBox justifyContent="Center">
+						<Text
+							class="app-body-details-txt"
+							text="סוהר קבוע"
+						/>
+					</VBox>
+					<VBox justifyContent="Center">
+						<Text
+							class="app-body-details-txt"
+							text="{i18n>EmployeeType}"
+						/>
+					</VBox>
+				</HBox>
+				<HBox class="app-body-details-hbox">
+					<VBox justifyContent="Center">
+						<Text
+							class="app-body-details-txt"
+							text="עובד יום"
+						/>
+					</VBox>
+					<VBox justifyContent="Center">
+						<Text
+							class="app-body-details-txt"
+							text="{i18n>WorkLog}"
+						/>
+					</VBox>
+				</HBox>
+				<HBox class="app-body-details-hbox">
+					<VBox justifyContent="Center">
+						<Text
+							class="app-body-details-txt"
+							text="0099928881"
+						/>
+					</VBox>
+					<VBox justifyContent="Center">
+						<Text
+							class="app-body-details-txt"
+							text="{i18n>CardNumber}"
+						/>
+					</VBox>
+				</HBox>
+				<HBox class="app-body-details-hbox">
+					<VBox justifyContent="Center">
+						<Text
+							class="app-body-details-txt"
+							text="אלי ישראלי"
+						/>
+					</VBox>
+					<VBox justifyContent="Center">
+						<Text
+							class="app-body-details-txt"
+							text="{i18n>Commander}"
+						/>
+					</VBox>
+				</HBox>
+				<HBox class="app-body-details-hbox">
+					<VBox justifyContent="Center">
+						<Text
+							class="app-body-details-txt"
+							text="אלי ויצמן"
+						/>
+					</VBox>
+					<VBox justifyContent="Center">
+						<Text
+							class="app-body-details-txt"
+							text="{i18n>HumanResourcesOfficer}"
+						/>
+					</VBox>
+				</HBox>
+			</VBox>
+			<HBox />
+		</VBox>
+	</Dialog>
+</core:FragmentDefinition>
