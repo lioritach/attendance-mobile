@@ -38,7 +38,7 @@
                             </content>
                         </Panel>
                         <InputListItem class="reportType-listItem" label="{i18n>chooseReason}">
-                            <Select>
+                            <Select >
                                 <core:Item key="1" text="שכחתי תג" />
                                 <core:Item key="2" text="יציאה בתפקיד" />
                                
