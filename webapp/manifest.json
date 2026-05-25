@@ -74,7 +74,8 @@
         "viewPath": "attendanceshabas.attendanceshabas.view",
         "controlAggregation": "pages",
         "controlId": "app",
-        "clearControlAggregation": false
+        "clearControlAggregation": false,
+        "type": "Hash"
       },
       "routes": [
         {
