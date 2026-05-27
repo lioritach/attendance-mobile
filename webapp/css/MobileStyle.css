@@ -1,4 +1,5 @@
 @import url("Elements/Button.css");
+@import url("Elements/Calendar.css");
 @import url("Elements/Panel.css");
 @import url("Elements/TextArea.css");
 
@@ -119,11 +120,30 @@
         background: transparent;
         border: none;
     }
-    .MobileMenuRow .sapUiSizeCompact .sapMSLITitle, .sapUiSizeCompact .sapMSLITitleOnly, .sapMSLITitleOnly, .sapMSLITitle {
+    .MobileMenuRow .sapUiSizeCompact .sapMSLITitle, 
+    .MobileMenuRow .sapUiSizeCompact .sapMSLITitleOnly, 
+    .MobileMenuRow .sapMSLITitleOnly, 
+    .MobileMenuRow .sapMSLITitle {
         font-size: 1.2rem;
         font-family: 'Rubik';
         font-weight: 500;
         color: #27292B;
+    }
+    .MobileReasonRow .sapUiSizeCompact .sapMSLITitle, 
+    .MobileReasonRow .sapUiSizeCompact .sapMSLITitleOnly, 
+    .MobileReasonRow .sapMSLITitleOnly, 
+    .MobileReasonRow .sapMSLITitle {
+        font-size: .9rem;
+        font-family: 'Rubik';
+        font-weight: 400;
+        color: #27292B;
+    }    
+    .MobileReasonRow{
+        border-bottom: none;
+    }
+    .MobileReasonRow.sapMLIB.sapMLIBSelected {
+        background: var(--Sky-Blue, #d7eafc);
+        border-radius: 1rem;
     }
     
 
@@ -144,10 +164,16 @@
         border-top-right-radius: 2rem;
         padding-top: 1rem;
     }
-
+    .MobileDetailsDialog{
+        direction: rtl;
+        background-color: transparent;
+    }
+    .MobileDetailsDialog .sapMDialog {
+        background-color: transparent;
+    }
     .MobileDetailsDialog .sapUiSizeCompact.sapMDialog>.sapMDialogSection,
-    .sapUiSizeCompact .sapMDialog>.sapMDialogSection,
-    .sapMDialog>.sapMDialogSection{
+    .MobileDetailsDialog .sapUiSizeCompact .sapMDialog>.sapMDialogSection,
+    .MobileDetailsDialog.sapMDialog>.sapMDialogSection{
         align-content: end;
         background-color: transparent !important;
     }

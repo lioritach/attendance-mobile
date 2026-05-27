@@ -19,25 +19,52 @@ sap.ui.define(
             .getModel("i18n")
             .getResourceBundle();
 
+          var currentHour = new Date().getHours();
+          if (currentHour < 12) {
+            var greeting = this.oBundle.getText("GoodMorning");
+          } else if (currentHour < 18) {
+            greeting = this.oBundle.getText("GoodAfternoon");
+          } else {
+            greeting = this.oBundle.getText("GoodEvening");
+          }  
+
           const oModel = new JSONModel({
             isCheckedIn: false,
             showEntryScreen: true,
             lastTime: "",
             location: "",
+            Employee: {},
+            greeting: greeting,
             navigation: [],
+            ReasonsList: [],
             DailyReport: {"Remark": "", 
                           "RemarkDef": this.oBundle.getText("DailyRemark"),
                           "Reason": "", 
                           "ReasonDef": this.oBundle.getText("DailyReasonSelect"),
-                          "ReasonList": [{Reason: "1", Text: "First"},
-                                        {Reason: "2", Text: "Second"},
-                                        {Reason: "3", Text: "Third"}],
                           "Approve": false}
           });
 
           this.getView().setModel(oModel, "clockModel");
           this.getView().getModel("clockModel").refresh(false);
           this.loadFragments(this, "MobileMainScreen", this._Page);
+
+          var model = this.getOwnerComponent().getModel();
+          model.read("/GetReasonsSet", {
+            success: function(oData){
+              oModel.setProperty("/ReasonsList", oData.results);
+            },
+            error: function(oEvent){debugger;}
+          });
+          model.read("/GetInfoEmpSet", {
+            urlParameters: {
+              "$expand": "ApproveAbsenceNav,ApproveIlnesNav,MonthNav,TitleDataNav,AttAbsNav"
+            },
+            success: function(oData){
+              oModel.setProperty("/Employee", oData.results[0].TitleDataNav.results[0]);
+            },
+            error: function(oEvent){debugger;}
+          });
+          
         },
 
         onBeforeShow: function (oEvent) {
@@ -384,6 +411,41 @@ sap.ui.define(
         },
         MobClockSwipe: function(oEvent){
           this.MobSwitchClockScreen();
+        },
+        MobReasonSelect: function(oEvent){
+          //oEvent.getSource().removeSelections();
+
+          var item = oEvent.getParameter("listItem").getBindingContext("clockModel").getObject();
+          var oModel = this.getView().getModel("clockModel");
+          oModel.setProperty("/DailyReport/Reason", item.Code);
+          oEvent.getSource().getParent().getParent().setExpanded(false);
+          if (oModel.getProperty("/DailyReport/Reason") !== "" && oModel.getProperty("/DailyReport/Remark") !== ""){
+            oModel.setProperty("/DailyReport/Approve", true);
+          }
+        },
+        MobDailyRemarkChange: function(oEvent){
+          var oModel = this.getView().getModel("clockModel");
+          if (oModel.getProperty("/DailyReport/Reason") !== "" && oModel.getProperty("/DailyReport/Remark") !== ""){
+            oModel.setProperty("/DailyReport/Approve", true);
+          }
+          //debugger;
+        },
+        MobExpandPanelRemark: function(oEvent){
+          if (!oEvent.getParameter("expand") && oEvent.getSource().getContent()[0].getValue() !== ""){
+            oEvent.getSource().setHeaderText(oEvent.getSource().getContent()[0].getValue());
+          }
+        },
+        MobDailyApprove: function(oEvent){
+          var oModel = this.getView().getModel("clockModel");
+
+
+          oModel.setProperty("/DailyReport/Approve", false);
+          oModel.setProperty("/DailyReport/Reason", "");
+          oModel.setProperty("/DailyReport/Remark", "");
+          oModel.setProperty("/DailyReport/RemarkDef", this.oBundle.getText("DailyRemark"));
+          oModel.refresh(false);
+
+          this.onBack();
         }
       },
     );

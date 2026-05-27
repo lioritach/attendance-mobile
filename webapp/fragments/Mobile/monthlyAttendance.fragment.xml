@@ -1,19 +1,21 @@
 <core:FragmentDefinition
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
-    <VBox>
+    <VBox class="mainContainer"> 
         <HBox
             width="100%"
             class="MobileHeaderBar"
-            justifyContent="SpaceBetween">
+            justifyContent="SpaceBetween" alignItems="Center">
                 <Button
                     class="MobileButtonMenu"
-                    icon="../css/images/CalendarAtt.svg"/> 
-                <Label text="{i18n>MonthlyAttendance}"/>
+                    icon="sap-icon://navigation-left-arrow"
+                    press="onBack"/>   
+                <VBox width="100%">       
+                    <Label text="{i18n>MonthlyAttendance}" class="MobileMediumText sapUiMediumMarginBeginEnd"/>
+                </VBox>
                 <Button
                     class="MobileButtonMenu"
-                    icon="sap-icon://navigation-right-arrow"
-                    press="onBack"/>     
+                    icon="../css/images/CalendarAtt.svg"/>   
             </HBox>         
     </VBox>
 </core:FragmentDefinition>

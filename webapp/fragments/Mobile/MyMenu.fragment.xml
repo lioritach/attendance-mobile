@@ -46,7 +46,7 @@
                     icon="../css/images/CalendarClose.svg"
                     iconDensityAware="false">
                     <customData>
-                        <core:CustomData key="route" value="absenceReport"/>
+                        <core:CustomData key="route" value="AbsenceReport"/>
                     </customData>
                 </StandardListItem>
 
@@ -76,14 +76,14 @@
             <HBox justifyContent="Center" alignItems="Center" class="MobileMenuFooter">
                 <VBox width="80%">
                     <HBox alignItems="Center">
-                        <Image
-                            class="image-menu sapUiSmallMarginEnd"
-                            src="../css/images/image.svg"
-                        />
+                        <Avatar
+							src="{clockModel>/Employee/ImgEmp}"
+							displaySize="M"
+							showBorder="true"
+							press=".openDetailsEmp"/>
                         <Text
-                            class="MobileMediumText"
-                            text="{i18n>fullName}"
-                        />                        
+                            class="MobileMediumText sapUiSmallMarginBeginEnd"
+                            text="{clockModel>/Employee/Name}"/>                        
                     </HBox>
                 </VBox>
                 <HBox width="20%" justifyContent="End">

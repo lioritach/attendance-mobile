@@ -1,0 +1,10 @@
+.MobileCalendar{
+    font-family: Rubik;
+    font-weight: 400;
+}
+.MobileCalendar .sapUiCalHead>button,
+.MobileCalendar .sapUiCalCancel {
+    font-size: 1rem;
+    font-family: 'Rubik';
+    font-weight: 600;
+}

@@ -29,15 +29,23 @@ sap.ui.define([
 				method: "GET",
 				path: new RegExp("FindUpcomingMeetups(.*)"),
 				response: (oXhr) => {
-					Log.debug("Incoming request for FindUpcomingMeetups");
-					const oToday = UI5Date.getInstance();
-					oToday.setHours(0); // or today.toUTCString(0) due to timezone differences
-					oToday.setMinutes(0);
-					oToday.setSeconds(0);
-					// the mock server only works with sap.jQuery.ajax and async: false. But the request does not
-					// actually go to a server, so it does not block the main thread.
 					jQuery.ajax({
-						url: `/Meetups?$filter=EventDate ge datetime'${oToday.toISOString()}'`,
+						url: '/GetReasonsSet',
+						dataType : 'json',
+						async: false,
+						success : (oData) => {
+							oXhr.respondJSON(200, {}, JSON.stringify(oData));
+						}
+					});
+					return true;
+				}
+			});
+			aRequests.push({
+				method: "GET",
+				path: new RegExp("FindUpcomingMeetups(.*)"),
+				response: (oXhr) => {
+					jQuery.ajax({
+						url: '/GetInfoEmpSet',
 						dataType : 'json',
 						async: false,
 						success : (oData) => {
@@ -52,11 +60,12 @@ sap.ui.define([
 			// handling custom URL parameter step
 			const fnCustom = (oEvent) => {
 				const oXhr = oEvent.getParameter("oXhr");
-				if (oXhr?.url.includes("first")) {
-					oEvent.getParameter("oFilteredData").results.splice(3, 100);
-				}
+					//if (oXhr?.url.includes("first")) {
+					//oEvent.getParameter("oFilteredData").results.splice(3, 100);
+				//}
 			};
-			oMockServer.attachAfter("GET", fnCustom, "Meetups");
+			oMockServer.attachAfter("GET", fnCustom, "GetReasonsSet");
+			oMockServer.attachAfter("GET", fnCustom, "GetInfoEmpSet");
 
 			// start
 			oMockServer.start();

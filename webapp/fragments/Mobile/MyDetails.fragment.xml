@@ -13,20 +13,21 @@
 			<HBox class="MobileMenuFooter" justifyContent="SpaceBetween" alignItems="Center">
 				<VBox height="100%">
 					<HBox alignItems="Center">
-						<Image
-							class="image-menu sapUiMediumMarginEnd"
-							src="../css/images/image.svg"/>
+						<Avatar
+							src="{clockModel>/Employee/ImgEmp}"
+							displaySize="M"
+							showBorder="true"
+							press=".closeDetailsEmp"/>
 						<Text
-							class="MobileMediumText"
-							text="{i18n>fullName}"/>
+							class="MobileMediumText sapUiMediumMarginBeginEnd"
+							text="{clockModel>/Employee/Name}"/>
 					</HBox>
 				</VBox>
 				<VBox height="100%" class="app-details-closePanel">
 					<Image
 						class="MobileDetailsImage"
 						src="../css/images/closePanel.svg"
-						press="closeDetailsEmp"
-					/>
+						press="closeDetailsEmp"/>
 				</VBox>
 				
 			</HBox>
@@ -35,14 +36,12 @@
 					<VBox justifyContent="Center">
 						<Text
 							class="MobileDetailsItemDescriptionText"
-							text="{i18n>EmployeeNumber}"
-						/>
+							text="{i18n>EmployeeNumber}"/>
 					</VBox>
 					<VBox justifyContent="Center">
 						<Text
 							class="MobileDetailsItemValueText"
-							text="00787135"
-						/>
+							text="{clockModel>/Employee/PersonaNumber}"/>
 					</VBox>
 					
 				</HBox>
@@ -50,14 +49,12 @@
 					<VBox justifyContent="Center">
 						<Text
 							class="MobileDetailsItemDescriptionText"
-							text="{i18n>EmployeeType}"
-						/>
+							text="{i18n>EmployeeType}"/>
 					</VBox>
 					<VBox justifyContent="Center">
 						<Text
 							class="MobileDetailsItemValueText"
-							text="סוהר קבוע"
-						/>
+							text="{clockModel>/Employee/EmployeeSubgroupName}"/>
 					</VBox>
 					
 				</HBox>
@@ -65,14 +62,12 @@
 					<VBox justifyContent="Center">
 						<Text
 							class="MobileDetailsItemDescriptionText"
-							text="{i18n>WorkLog}"
-						/>
+							text="{i18n>WorkLog}"/>
 					</VBox>
 					<VBox justifyContent="Center">
 						<Text
 							class="MobileDetailsItemValueText"
-							text="עובד יום"
-						/>
+							text="{clockModel>/Employee/WorkScheduleName}"/>
 					</VBox>
 					
 				</HBox>
@@ -80,14 +75,12 @@
 					<VBox justifyContent="Center">
 						<Text
 							class="MobileDetailsItemDescriptionText"
-							text="{i18n>CardNumber}"
-						/>
+							text="{i18n>CardNumber}"/>
 					</VBox>
 					<VBox justifyContent="Center">
 						<Text
 							class="MobileDetailsItemValueText"
-							text="0099928881"
-						/>
+							text="???"/>
 					</VBox>
 					
 				</HBox>
@@ -95,14 +88,12 @@
 					<VBox justifyContent="Center">
 						<Text
 							class="MobileDetailsItemDescriptionText"
-							text="{i18n>Commander}"
-						/>
+							text="{i18n>Commander}"/>
 					</VBox>
 					<VBox justifyContent="Center">
 						<Text
 							class="MobileDetailsItemValueText"
-							text="אלי ישראלי"
-						/>
+							text="{clockModel>/Employee/MangName}"/>
 					</VBox>
 					
 				</HBox>
@@ -110,14 +101,12 @@
 					<VBox justifyContent="Center">
 						<Text
 							class="MobileDetailsItemDescriptionText"
-							text="{i18n>HumanResourcesOfficer}"
-						/>
+							text="{i18n>HumanResourcesOfficer}"/>
 					</VBox>
 					<VBox justifyContent="Center">
 						<Text
 							class="MobileDetailsItemValueText"
-							text="אלי ויצמן"
-						/>
+							text="{clockModel>/Employee/MashaName}"/>
 					</VBox>
 					
 				</HBox>

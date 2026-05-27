@@ -27,7 +27,7 @@
                     >
                         <Text
                             class="goodDayN"
-                            text="{i18n>goodDayN}"
+                            text="{clockModel>/greeting} {clockModel>/Employee/Name}"
                         />
                     </HBox>
                     <List swipe=".MobClockSwipe"
@@ -94,15 +94,14 @@
             <HBox>
                 <HBox class="MobileFooterBox" justifyContent="Center" alignItems="Center">
                     <HBox class="MobileFooterBody" justifyContent="Center" alignItems="Center">
-                        <Button
-                            icon="sap-icon://arrow-left"
-                            press=".onAnimatePress"
-                            class="MobileMoveableButton"
-                        />
                         <Text
                             class="footer-text"
-                            text="פירוט נוכחות חודשית"
-                        />
+                            text="{i18n>MonthlyAttendance}"/>
+                        <Button
+                            icon="sap-icon://arrow-right"
+                            press=".onAnimatePress"
+                            class="MobileMoveableButton"/>
+                        
                     </HBox>
                 </HBox>
             </HBox>

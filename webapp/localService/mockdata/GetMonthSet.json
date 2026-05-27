@@ -1,0 +1,45 @@
+{
+  "d" : {
+    "results" : [
+      {
+        "__metadata" : {
+          "id" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/GetInfoEmpSet('')",
+          "uri" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/GetInfoEmpSet('')",
+          "type" : "Z_PRESENCE_SRV.GetMonth"
+        },
+        "IvCaller" : "1",
+        "TriggerText1" : "",
+        "IvUserName" : "",
+        "IvPersonnelNumber" : "00102236",
+        "IvPeriod" : "202601",
+        "IvScreenType" : "0",
+        "IvIncludeCancelledRecord" : "",
+        "IvEcecutePt60" : "",
+        "Trriger2" : "0.00",
+              "OverAbsenceHrsMonthly" : "0.00",
+              "OverAbsencHrsQuarter" : "0.00",
+              "FinalOverAbsenceHrsQuarter" : "0.00",
+              "AbsenceHrsDedPayroll" : "0.00",
+              "AbsenceHrsDedVacation" : "0.00",
+              "AbsenceDaysDedVacation" : "0.00",
+              "EndOfQuarterTrigget" : "0.00",
+              "WayOfAbsenceHoursSetoff" : "0.00",
+              "MonthlyEmployeeComment" : "",
+              "MonthlyManagerComment" : "",
+              "MonthlyAdminComment" : "",
+              "MonthlyResCommernt" : "",
+              "AttendenceHours" : "0.00",
+              "AttendenceHoursWhitoutBreak" : "0.00",
+              "PlannedHours" : "0.00",
+              "OvertimeHours" : "0.00",
+              "PaymentHours" : "0.00",
+              "OvertimeAllocation" : "0.00",
+              "MonthlyQuantity1" : "0.00",
+              "MonthlyQuantity2" : "0.00",
+              "MonthlyQuantity3" : "0.00",
+              "MonthlyQuantity4" : "0.00",
+              "MonthlyQuantity5" : "0.00"
+            }
+          ]  
+  }
+}
