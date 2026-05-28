@@ -11,4 +11,3 @@ sap.ui.define(
       });
     }
   );
-  
