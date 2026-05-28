@@ -27,7 +27,7 @@
                     >
                         <Text
                             class="goodDayN"
-                            text="{clockModel>/greeting} {clockModel>/Employee/Name}"
+                            text="{clockModel>/greeting} {clockModel>/Employee/FirstName}"
                         />
                     </HBox>
                     <List swipe=".MobClockSwipe"

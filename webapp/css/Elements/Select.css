@@ -1,0 +1,29 @@
+.MobileSelect{
+    border-radius: .75rem;
+    height: 2.75rem;
+    
+}
+.MobileSelect.sapMSlt:not(.sapMSltIconOnly){
+    border-radius: .75rem;
+}
+.MobileSelect.sapMSlt>.sapMSltArrow {
+    line-height: 2.75rem;
+}
+.MobileSelect.sapMSlt>.sapMSltLabel{
+    font-family: Rubik;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 500;
+}
+.MobileSelectPopover{
+    min-width: 60%;
+    border-radius: .5rem;
+    touch-action: manipulation;
+}
+.MobileSelectPopover .sapMSelectListItemBase{
+    font-family: Rubik;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 500;
+    outline: none;
+}

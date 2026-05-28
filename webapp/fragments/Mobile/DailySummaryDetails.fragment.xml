@@ -1,0 +1,34 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    core:require="{formatter: 'attendanceshabas/attendanceshabas/model/formatter'}">
+	<Dialog
+		class="MobileDetailsDialog"
+		stretch="true"
+		showHeader="false">
+		<VBox class="MobileDetailsDialogBody"
+			height="100%">
+			<HBox class="MobileMenuFooter" justifyContent="SpaceBetween" alignItems="Center">
+				<VBox height="100%">
+					<HBox alignItems="Center">
+						<Text class="MobileLabel2TextBold" 
+							text="{clockModel>/DailyItem/Weekday}"/>
+						<Text class="MobileLabel2TextBold sapUiMediumMarginBeginEnd"
+							text="{ path: 'clockModel>/DailyItem/Datum',
+				                    type: 'sap.ui.model.type.Date',
+				                    formatOptions: {pattern: 'dd.MM.yyyy'}}"/>
+					</HBox>
+				</VBox>
+				<Button
+                class="MobileButtonMenu"
+                icon="sap-icon://decline"
+                press="CloseDialogScreen"/> 
+			</HBox>
+
+			<VBox>
+				
+				
+			</VBox>
+		</VBox>
+	</Dialog>
+</core:FragmentDefinition>

@@ -374,10 +374,10 @@
 <End Type="Z_PRESENCE_SRV.Balance" Multiplicity="*" Role="ToRole_BalanceToGetInfoAs"/>
 <ReferentialConstraint>
 <Principal Role="FromRole_BalanceToGetInfoAs">
-<PropertyRef Name="TriggerText1"/>
+<PropertyRef Name="IvPeriod"/>
 </Principal>
 <Dependent Role="ToRole_BalanceToGetInfoAs">
-<PropertyRef Name="SubGroup"/>
+<PropertyRef Name="IvPeriod"/>
 </Dependent>
 </ReferentialConstraint>
 </Association>
@@ -386,10 +386,10 @@
 <End Type="Z_PRESENCE_SRV.TitleData" Multiplicity="*" Role="ToRole_TitleDataAs"/>
 <ReferentialConstraint>
 <Principal Role="FromRole_TitleDataAs">
-<PropertyRef Name="TriggerText1"/>
+<PropertyRef Name="IvPeriod"/>
 </Principal>
 <Dependent Role="ToRole_TitleDataAs">
-<PropertyRef Name="TrrigerText1"/>
+<PropertyRef Name="IvPeriod"/>
 </Dependent>
 </ReferentialConstraint>
 </Association>
@@ -398,10 +398,10 @@
 <End Type="Z_PRESENCE_SRV.ApproveAbsence" Multiplicity="*" Role="ToRole_ApproveAbsenceAs"/>
 <ReferentialConstraint>
 <Principal Role="FromRole_ApproveAbsenceAs">
-<PropertyRef Name="TriggerText1"/>
+<PropertyRef Name="IvPeriod"/>
 </Principal>
 <Dependent Role="ToRole_ApproveAbsenceAs">
-<PropertyRef Name="AbsenceText"/>
+<PropertyRef Name="IvPeriod"/>
 </Dependent>
 </ReferentialConstraint>
 </Association>
@@ -410,10 +410,10 @@
 <End Type="Z_PRESENCE_SRV.ApproveIlnes" Multiplicity="*" Role="ToRole_ApproveIlnesAs"/>
 <ReferentialConstraint>
 <Principal Role="FromRole_ApproveIlnesAs">
-<PropertyRef Name="TriggerText1"/>
+<PropertyRef Name="IvPeriod"/>
 </Principal>
 <Dependent Role="ToRole_ApproveIlnesAs">
-<PropertyRef Name="AbsenceText"/>
+<PropertyRef Name="AIvPeriod"/>
 </Dependent>
 </ReferentialConstraint>
 </Association>
@@ -422,10 +422,10 @@
 <End Type="Z_PRESENCE_SRV.GetMonth" Multiplicity="*" Role="ToRole_MonthAs"/>
 <ReferentialConstraint>
 <Principal Role="FromRole_MonthAs">
-<PropertyRef Name="Trriger2"/>
+<PropertyRef Name="IvPeriod"/>
 </Principal>
 <Dependent Role="ToRole_MonthAs">
-<PropertyRef Name="AbsenceDaysDedVacation"/>
+<PropertyRef Name="IvPeriod"/>
 </Dependent>
 </ReferentialConstraint>
 </Association>
@@ -434,10 +434,10 @@
 <End Type="Z_PRESENCE_SRV.GetAttAbs" Multiplicity="*" Role="ToRole_AttAbsAs"/>
 <ReferentialConstraint>
 <Principal Role="FromRole_AttAbsAs">
-<PropertyRef Name="TriggerText1"/>
+<PropertyRef Name="IvPeriod"/>
 </Principal>
 <Dependent Role="ToRole_AttAbsAs">
-<PropertyRef Name="TriggerText1"/>
+<PropertyRef Name="IvPeriod"/>
 </Dependent>
 </ReferentialConstraint>
 </Association>

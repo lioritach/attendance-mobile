@@ -1,0 +1,32 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified">
+    <VBox class="mainContainer">
+        <HBox
+            width="100%"
+            class="MobileHeaderBar" renderType="Bare" alignItems="Center">
+            <Button
+                class="MobileButtonMenu"
+                icon="sap-icon://navigation-left-arrow"
+                press="onBack"/> 
+            <Label text="{i18n>MyShifts}" class="MobileMediumText sapUiSmallMarginBeginEnd"/>
+            
+            <SegmentedButton selectedKey="{clockModel>/WorkArrangement/CurrentMode}" 
+            selectionChange=".MobOnWorkArrangementSwitch"
+            class="MobileSegmentButton">
+					<items>
+						<SegmentedButtonItem text="{i18n>Monthly}" key="Month"/>
+						<SegmentedButtonItem text="{i18n>Weekly}" key="Week"/>
+					</items>
+		    </SegmentedButton>
+
+        </HBox> 
+
+        <VBox height="100%" class="sapUiContentPadding">
+            
+
+        </VBox>
+
+    </VBox>
+</core:FragmentDefinition>

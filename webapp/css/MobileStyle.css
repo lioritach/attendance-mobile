@@ -1,7 +1,12 @@
 @import url("Elements/Button.css");
 @import url("Elements/Calendar.css");
+@import url("Elements/Menu.css");
 @import url("Elements/Panel.css");
+@import url("Elements/SegmentButton.css");
+@import url("Elements/Select.css");
+@import url("Elements/Switch.css");
 @import url("Elements/TextArea.css");
+@import url("Elements/ToggleButton.css");
 
 .MainScreenClock{
     height: 100%;
@@ -83,6 +88,7 @@
         border-radius: 50%;
         background-color: #FFFFFF;
         box-shadow: 0px 4px 34px #728AA766;
+        
     }
 }
 
@@ -91,6 +97,9 @@
         border-top-right-radius: 2.2rem;
         background-color: #324153;
         width: 100%;
+        position: fixed;
+        bottom: 0;
+        
     }
     .MobileFooterBody{
         width: 100%;
@@ -129,6 +138,35 @@
         font-weight: 500;
         color: #27292B;
     }
+
+    .MobileActionMenuRow.sapMLIB{
+        justify-content: flex-end;
+        background: transparent;
+        border: none;
+    }
+    .MobileActionMenuRow .sapUiSizeCompact .sapMSLITitle, 
+    .MobileActionMenuRow .sapUiSizeCompact .sapMSLITitleOnly, 
+    .MobileActionMenuRow .sapMSLITitleOnly, 
+    .MobileActionMenuRow .sapMSLITitle {
+        font-size: .9rem;
+        font-family: 'Rubik';
+        font-weight: 500;
+        color: #27292B;
+    }
+    .MobileActionMenuRow .sapUiSizeCompact .sapMSLIImgIcon, 
+    .MobileActionMenuRow .sapUiSizeCompact .sapMSLIImgNoInsetIcon, 
+    .MobileActionMenuRow .sapMSLIImgIcon, 
+    .MobileActionMenuRow .sapMSLIImgNoInsetIcon{
+        font-size: 1.3rem;
+        color: #27292B;
+        margin-left: 0.75rem;
+        -webkit-text-stroke: .5px;
+    }
+    .MobileActionMenuRow .sapMSLIImg{
+        height: 2rem;
+        width: 2rem;
+    }
+
     .MobileReasonRow .sapUiSizeCompact .sapMSLITitle, 
     .MobileReasonRow .sapUiSizeCompact .sapMSLITitleOnly, 
     .MobileReasonRow .sapMSLITitleOnly, 
@@ -147,6 +185,50 @@
     }
     
 
+    
+    .MobileMonthRow{
+        margin-bottom: .5rem;
+    }
+    .MobileEntryRow{
+        line-height: 2rem;     
+        border-bottom: none;   
+    }
+    .MobileMonthRowDayItemHeader{
+        padding-left: .5rem;
+        padding-right: .5rem;
+        background-color: #EFF7FE;
+        height: 2.5rem;
+    }
+    .MobileMonthRowDayItem{
+        padding-left: .5rem;
+        padding-right: .5rem;
+        background-color: #ffffff;
+    }
+    .MobileLabelText {
+        font-size: .9rem;
+        font-family: 'Rubik';
+        font-weight: 400;
+        color: #27292B;
+    }
+    .MobileLabelTextBold {
+        font-size: .9rem;
+        font-family: 'Rubik';
+        font-weight: 500;
+        color: #27292B;
+    }
+    .MobileLabel2Text {
+        font-size: 1.1rem;
+        font-family: 'Rubik';
+        font-weight: 400;
+        color: #27292B;
+    }
+    .MobileLabel2TextBold {
+        font-size: 1.1rem;
+        font-family: 'Rubik';
+        font-weight: 500;
+        color: #27292B;
+    }
+
 
     .MobileMenuFooter{
         background-color: #FFFFFF;
@@ -163,10 +245,13 @@
         border-top-left-radius: 2rem;
         border-top-right-radius: 2rem;
         padding-top: 1rem;
+        min-height: 60vh;
     }
+    
     .MobileDetailsDialog{
         direction: rtl;
         background-color: transparent;
+        top: unset !important;
     }
     .MobileDetailsDialog .sapMDialog {
         background-color: transparent;
@@ -238,14 +323,36 @@
         min-width: 8rem;
     }
     
-
-    .MobileSelect{
-        border-radius: .75rem;
-        height: 2.75rem;;
+    .MobilePopover{
+        border-radius: .5rem;
     }
-    .MobileSelect.sapMSlt:not(.sapMSltIconOnly){
-        border-radius: .75rem;
+    .MobileTotalPanel{
+        padding: 1rem;
+        margin: 1rem;
+        background: #3E5066;
+        border-radius: .5rem;
+        max-height: 20rem;
+        transition: width 0.5s, height 0.5s;
     }
-    .MobileSelect.sapMSlt>.sapMSltArrow {
-        line-height: 2.75rem;
+    
+    .MobileTotalPanelDivider{
+        border-top: 1px solid #627D9E;
+    }
+    .MobileSmallFooterText.sapMLabel{
+    color: var(--Pure-White, #fff);
+    /* Menu items */
+    font-family: Rubik;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    }
+    .MobileSmallFooterText.sapMText{
+    color: var(--Pure-White, #fff);
+    /* Menu items */
+    font-family: Rubik;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
     }

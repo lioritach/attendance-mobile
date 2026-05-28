@@ -14,60 +14,93 @@
             <Label text=""/>
         </HBox> 
 
-        <VBox height="100%" class="sapUiMediumMarginTop sapUiContentPadding">
+        <VBox height="100%" class="sapUiTinyMarginTop sapUiContentPadding">
             
             <Panel 
             expandable="true" 
-            headerText="{clockModel>/DailyReport/ReasonDef}" 
+            expand=".MobOnPanelExpand"
+            headerText="{clockModel>/AnsenceReport/ReasonDef}" 
             width="auto" 
             class="sapUiResponsiveMargin MobilePanel">
                 <content>
-                    <List inset="false" 
-                    mode="SingleSelectMaster" 
-                    items="{clockModel>/DailyReport/ReasonList}"
-                    selectionChange="MobReasonSelect">
-                        <StandardListItem
-                        class="MobileReasonRow"
-                            title="{clockModel>TextCode}">
-                        </StandardListItem>
-                    </List>
+                <ScrollContainer
+                    height="15rem"
+                    width="100%"
+                    horizontal="false"
+                    vertical="true"
+                    focusable="true">
+                        <List inset="false" 
+                        mode="SingleSelectMaster" 
+                        items="{path: 'clockModel>/ReasonsList', templateShareable: false,
+                        filters: [{
+                            path: 'CompleteDay',
+                            operator: 'EQ',
+                            value1: true
+                            }] }"
+                        selectionChange="MobMonthlyReasonSelect">
+                            <StandardListItem
+                            class="MobileReasonRow"
+                                title="{clockModel>TextCode}">
+                            </StandardListItem>
+                        </List>
+                    </ScrollContainer>
                 </content>
             </Panel>
-            <Panel 
+            <Panel visible="{clockModel>/AnsenceReport/Absence/ReportFullDays}"
             expandable="true" 
-            expand=".MobExpandPanelRemark"
-            headerText="{clockModel>/DailyReport/RemarkDef}" 
+            expand=".MobOnPanelExpand"
+            headerText="{clockModel>/AnsenceReport/PeriodDef}" 
             width="auto" 
             class="sapUiResponsiveMargin MobilePanel sapMBtnIconLeft">
                 <content>
                     <u:Calendar
                     select=".MobAbsenceCalendarSelect"
                     showWeekNumbers="false"
-                    intervalSelection="true"
+                    intervalSelection="{clockModel>/AnsenceReport/Absence/PeriodReport}"
                     class="MobileCalendar"/>
-                    <HBox justifyContent="SpaceBetween" alignItems="Center">
+                    <HBox height="3rem" justifyContent="SpaceBetween" alignItems="Center">
                         <Button text="{i18n>Clear}" 
                         press=".MobDailyApprove"
-                        class="MobileApproveButton"
-                        enabled="{clockModel>/DailyReport/Approve}"/>                    
+                        type="Transparent"
+                        class="MobileApproveButton"/>                    
                         <Button text="{i18n>Approve}" 
                         press=".MobDailyApprove"
-                        class="MobileApproveButton"
-                        enabled="{clockModel>/DailyReport/Approve}"/>                        
+                        class="MobileApproveButton"/>                        
                     </HBox>                       
+                </content>
+            </Panel> 
+
+            <Panel visible="{clockModel>/AnsenceReport/Absence/ReportHours}"
+            expandable="true" 
+            expand=".MobOnPanelExpand"
+            headerText="{clockModel>/AnsenceReport/HoursDef}" 
+            width="auto" 
+            class="sapUiResponsiveMargin MobilePanel sapMBtnIconLeft">
+                <content>
+
+                </content>
+            </Panel>    
+            <Panel visible="{clockModel>/AnsenceReport/Absence/AddFile}"
+            expandable="true" 
+            expand=".MobOnPanelExpand"
+            headerText="{clockModel>/AnsenceReport/AttachmentDef}" 
+            width="auto" 
+            class="sapUiResponsiveMargin MobilePanel sapMBtnIconLeft">
+                <content>
+
                 </content>
             </Panel>  
             <Panel 
             expandable="true" 
-            expand=".MobExpandPanelRemark"
-            headerText="{clockModel>/DailyReport/RemarkDef}" 
+            expand=".MobOnPanelExpand"
+            headerText="{clockModel>/AnsenceReport/RemarkDef}" 
             width="auto" 
             class="sapUiResponsiveMargin MobilePanel">
                 <content>
                     <TextArea class="MobileTextArea" 
                     width="100%" 
                     rows="6" 
-                    value="{clockModel>/DailyReport/Remark}" 
+                    value="{clockModel>/AnsenceReport/Remark}" 
                     liveChange="MobDailyRemarkChange"
                     valueLiveUpdate="true"/>
                 </content>
@@ -79,7 +112,7 @@
                 <Button text="{i18n>Approve}" 
                 press=".MobDailyApprove"
                 class="MobileApproveButton"
-                enabled="{clockModel>/DailyReport/Approve}"/>
+                enabled="{clockModel>/AnsenceReport/Approve}"/>
             </HBox>   
         </HBox>            
     </VBox>

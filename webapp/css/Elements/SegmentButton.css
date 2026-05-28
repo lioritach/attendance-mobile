@@ -1,0 +1,100 @@
+.MobileSegmentButton{
+    border: 2px solid #fff;
+    border-radius: 2rem;
+    background: #fff;
+    padding: 0;
+    display: inline-flex;
+    overflow: hidden;
+}
+
+.MobileSegmentButton.sapMSegB {
+    display: inline-flex;
+    align-items: center;   /* ← vertical centering */
+    justify-content: center;
+    border: 2px solid #fff;
+    border-radius: 2rem;
+    background: #fff;
+    padding: 0;
+    overflow: hidden;
+}
+
+.MobileSegmentButton .sapMSegBBtn.sapMSegBBtnFocusable.sapMSegBBtnSel:hover,
+.MobileSegmentButton .sapMSegBBtnFocusable.sapMBtnActive:hover{
+    background-color: #324153;
+}
+.MobileSegmentButton .sapMSegBBtn .sapMSegBBtnSel,
+.MobileSegmentButton .sapMSegBBtn .sapMSegBBtnSel .sapMSegBBtnInner{
+    background-color: #324153;
+    color: #fff;
+    border-color: #324153;
+    background: #324153;
+    border-radius: 2rem;
+    
+}
+
+.MobileSegmentButton .sapMSegBBtn.sapMSegBBtnSel:first-child{
+    border-radius: 2rem;
+    background-color: #324153;
+}
+.MobileSegmentButton .sapMSegBBtn.sapMSegBBtnSel:last-child{
+    border-radius: 2rem;
+    background-color: #324153;
+}
+.MobileSegmentButton .sapMSegBBtn:not(.sapMSegBBtnSel):last-child{
+    padding-right: 0;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+}
+MobileSegmentButton .sapMSegBBtn:not(.sapMSegBBtnSel):first-child{
+    padding-left: 0;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+.MobileSegmentButton.sapMSegB .sapMSegBBtn {
+    font-family: Rubik;
+    font-size: 0;
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.MobileSegmentButton.sapMSegB .sapMSegBBtn .sapMSegBBtnInner{
+    font-size: 1rem;
+    font-family: Rubik;
+    padding: 0.45rem 1rem;   /* ← increased height + nicer proportions */
+    line-height: 1.2;
+    height: auto;
+    background: transparent;
+    border: none;
+    border-radius: 2rem;
+}
+
+.MobileSegmentButton.sapMSegB .sapMSegBBtnInner {
+    font-size: 1rem;
+    font-family: Rubik;
+    padding: 0.25rem 0.75rem; 
+    line-height: 1.2;
+    height: auto;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+/* Selected segment */
+.MobileSegmentButton.sapMSegB .sapMSegBBtn.sapMSegBBtnSel .sapMSegBBtnInner {
+    background: #324153;
+    color: #fff;
+    border-radius: 2rem;
+}
+
+/* Hover (optional) */
+.MobileSegmentButton.sapMSegB .sapMSegBBtn:hover .sapMSegBBtnInner {
+    background: rgba(50, 65, 83, 0.1);
+}
+
+/* Hover on selected */
+.MobileSegmentButton.sapMSegB .sapMSegBBtn.sapMSegBBtnSel:hover .sapMSegBBtnInner {
+    background: #324153;
+}

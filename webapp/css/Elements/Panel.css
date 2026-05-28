@@ -5,6 +5,9 @@
         font-style: normal;
         font-weight: 500;
     }
+    .MobilePanel .sapMPanelContent {
+        padding: 0rem 1rem 0rem 1rem;
+    }
     .MobilePanel .sapMPanelWrappingDiv .sapUiIcon {
         right: auto;
         left: 0;

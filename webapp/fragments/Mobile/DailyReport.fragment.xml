@@ -14,24 +14,11 @@
             <Label text=""/>
         </HBox> 
 
-        <VBox height="100%" class="sapUiMediumMarginTop sapUiContentPadding">
+        <VBox height="100%" class="sapUiTinyMarginTop sapUiContentPadding">
+            
             <Panel 
-            expandable="true" 
-            expand=".MobExpandPanelRemark"
-            headerText="{clockModel>/DailyReport/RemarkDef}" 
-            width="auto" 
-            class="sapUiResponsiveMargin MobilePanel">
-                <content>
-                    <TextArea class="MobileTextArea" 
-                    width="100%" 
-                    rows="6" 
-                    value="{clockModel>/DailyReport/Remark}" 
-                    liveChange="MobDailyRemarkChange"
-                    valueLiveUpdate="true"/>
-                </content>
-            </Panel>
-            <Panel 
-            expandable="true" 
+            expandable="true"
+            expand=".MobOnPanelExpand" 
             headerText="{clockModel>/DailyReport/ReasonDef}" 
             width="auto" 
             class="sapUiResponsiveMargin MobilePanel">
@@ -39,6 +26,7 @@
                     <ScrollContainer
                     height="15rem"
                     width="100%"
+                    horizontal="false"
                     vertical="true"
                     focusable="true">
                         <List inset="false" 
@@ -56,6 +44,21 @@
                             </StandardListItem>
                         </List>
                     </ScrollContainer>
+                </content>
+            </Panel>
+            <Panel 
+            expandable="true" 
+            expand=".MobOnPanelExpand"
+            headerText="{clockModel>/DailyReport/RemarkDef}" 
+            width="auto" 
+            class="sapUiResponsiveMargin MobilePanel">
+                <content>
+                    <TextArea class="MobileTextArea" 
+                    width="100%" 
+                    rows="6" 
+                    value="{clockModel>/DailyReport/Remark}" 
+                    liveChange="MobDailyRemarkChange"
+                    valueLiveUpdate="true"/>
                 </content>
             </Panel>
         </VBox>

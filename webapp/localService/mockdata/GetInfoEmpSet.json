@@ -1,252 +1,58 @@
-{
-  "d" : {
-    "results" : [
-      {
-        "__metadata" : {
-          "id" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/GetInfoEmpSet('')",
-          "uri" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/GetInfoEmpSet('')",
-          "type" : "Z_PRESENCE_SRV.GetInfoEmp"
-        },
-        "IvCaller" : "1",
+  [
+    {"IvCaller" : "1",
+      "TriggerText1" : "",
+      "IvUserName" : "",
+      "IvPersonnelNumber" : "00142711",
+      "IvPeriod" : "202601",
+      "IvScreenType" : "0",
+      "IvIncludeCancelledRecord" : "",
+      "IvEcecutePt60" : "",
+      "Trriger2" : "0.00"
+    },    
+    {"IvCaller" : "1",
         "TriggerText1" : "",
         "IvUserName" : "",
-        "IvPersonnelNumber" : "00142711",
-        "IvPeriod" : "202501",
+        "IvPersonnelNumber" : "00232256",
+        "IvPeriod" : "202602",
         "IvScreenType" : "0",
         "IvIncludeCancelledRecord" : "",
         "IvEcecutePt60" : "",
-        "Trriger2" : "0.00",
-        "MonthNav" : {
-          "results" : [
-            {
-              "__metadata" : {
-                "id" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/GetMonthSet('')",
-                "uri" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/GetMonthSet('')",
-                "type" : "Z_PRESENCE_SRV.GetMonth"
-              },
-              "OverAbsenceHrsMonthly" : "0.00",
-              "OverAbsencHrsQuarter" : "0.00",
-              "FinalOverAbsenceHrsQuarter" : "0.00",
-              "AbsenceHrsDedPayroll" : "0.00",
-              "AbsenceHrsDedVacation" : "0.00",
-              "AbsenceDaysDedVacation" : "0.00",
-              "EndOfQuarterTrigget" : "0.00",
-              "WayOfAbsenceHoursSetoff" : "0.00",
-              "MonthlyEmployeeComment" : "",
-              "MonthlyManagerComment" : "",
-              "MonthlyAdminComment" : "",
-              "MonthlyResCommernt" : "",
-              "AttendenceHours" : "0.00",
-              "AttendenceHoursWhitoutBreak" : "0.00",
-              "PlannedHours" : "0.00",
-              "OvertimeHours" : "0.00",
-              "PaymentHours" : "0.00",
-              "OvertimeAllocation" : "0.00",
-              "MonthlyQuantity1" : "0.00",
-              "MonthlyQuantity2" : "0.00",
-              "MonthlyQuantity3" : "0.00",
-              "MonthlyQuantity4" : "0.00",
-              "MonthlyQuantity5" : "0.00"
-            }
-          ]
-        },
-        "ApproveIlnesNav" : {
-          "results" : [
-            {
-              "__metadata" : {
-                "id" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/ApproveIlnesSet('%D7%91')",
-                "uri" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/ApproveIlnesSet('%D7%91')",
-                "type" : "Z_PRESENCE_SRV.ApproveIlnes"
-              },
-              "AttachementExist" : "",
-              "DateFrom" : "\/Date(1736121600000)\/",
-              "WeekdayFrom" : "ב",
-              "DateTo" : "\/Date(1736121600000)\/",
-              "WeekdayTo" : "ב",
-              "TimeOfEntrance" : "PT  H  M  S",
-              "TimeOfGoingOut" : "PT  H  M  S",
-              "Deduction" : "1.00",
-              "AbsenceType" : "0700",
-              "AbsenceText" : "פגרה"
-            },
-            {
-              "__metadata" : {
-                "id" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/ApproveIlnesSet('%D7%92')",
-                "uri" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/ApproveIlnesSet('%D7%92')",
-                "type" : "Z_PRESENCE_SRV.ApproveIlnes"
-              },
-              "AttachementExist" : "",
-              "DateFrom" : "\/Date(1736208000000)\/",
-              "WeekdayFrom" : "ג",
-              "DateTo" : "\/Date(1736208000000)\/",
-              "WeekdayTo" : "ג",
-              "TimeOfEntrance" : "PT  H  M  S",
-              "TimeOfGoingOut" : "PT  H  M  S",
-              "Deduction" : "1.00",
-              "AbsenceType" : "0700",
-              "AbsenceText" : "פגרה"
-            },
-            {
-              "__metadata" : {
-                "id" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/ApproveIlnesSet('%D7%92')",
-                "uri" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/ApproveIlnesSet('%D7%92')",
-                "type" : "Z_PRESENCE_SRV.ApproveIlnes"
-              },
-              "AttachementExist" : "",
-              "DateFrom" : "\/Date(1736812800000)\/",
-              "WeekdayFrom" : "ג",
-              "DateTo" : "\/Date(1736812800000)\/",
-              "WeekdayTo" : "ג",
-              "TimeOfEntrance" : "PT  H  M  S",
-              "TimeOfGoingOut" : "PT  H  M  S",
-              "Deduction" : "1.00",
-              "AbsenceType" : "0100",
-              "AbsenceText" : "חופשה"
-            },
-            {
-              "__metadata" : {
-                "id" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/ApproveIlnesSet('%D7%93')",
-                "uri" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/ApproveIlnesSet('%D7%93')",
-                "type" : "Z_PRESENCE_SRV.ApproveIlnes"
-              },
-              "AttachementExist" : "",
-              "DateFrom" : "\/Date(1736899200000)\/",
-              "WeekdayFrom" : "ד",
-              "DateTo" : "\/Date(1736899200000)\/",
-              "WeekdayTo" : "ד",
-              "TimeOfEntrance" : "PT  H  M  S",
-              "TimeOfGoingOut" : "PT  H  M  S",
-              "Deduction" : "1.00",
-              "AbsenceType" : "0100",
-              "AbsenceText" : "חופשה"
-            },
-            {
-              "__metadata" : {
-                "id" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/ApproveIlnesSet('%D7%94')",
-                "uri" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/ApproveIlnesSet('%D7%94')",
-                "type" : "Z_PRESENCE_SRV.ApproveIlnes"
-              },
-              "AttachementExist" : "",
-              "DateFrom" : "\/Date(1736985600000)\/",
-              "WeekdayFrom" : "ה",
-              "DateTo" : "\/Date(1736985600000)\/",
-              "WeekdayTo" : "ה",
-              "TimeOfEntrance" : "PT  H  M  S",
-              "TimeOfGoingOut" : "PT  H  M  S",
-              "Deduction" : "1.00",
-              "AbsenceType" : "0100",
-              "AbsenceText" : "חופשה"
-            },
-            {
-              "__metadata" : {
-                "id" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/ApproveIlnesSet('%D7%90')",
-                "uri" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/ApproveIlnesSet('%D7%90')",
-                "type" : "Z_PRESENCE_SRV.ApproveIlnes"
-              },
-              "AttachementExist" : "",
-              "DateFrom" : "\/Date(1737244800000)\/",
-              "WeekdayFrom" : "א",
-              "DateTo" : "\/Date(1737590400000)\/",
-              "WeekdayTo" : "ה",
-              "TimeOfEntrance" : "PT  H  M  S",
-              "TimeOfGoingOut" : "PT  H  M  S",
-              "Deduction" : "5.00",
-              "AbsenceType" : "0100",
-              "AbsenceText" : "חופשה"
-            },
-            {
-              "__metadata" : {
-                "id" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/ApproveIlnesSet('%D7%90')",
-                "uri" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/ApproveIlnesSet('%D7%90')",
-                "type" : "Z_PRESENCE_SRV.ApproveIlnes"
-              },
-              "AttachementExist" : "",
-              "DateFrom" : "\/Date(1737849600000)\/",
-              "WeekdayFrom" : "א",
-              "DateTo" : "\/Date(1738195200000)\/",
-              "WeekdayTo" : "ה",
-              "TimeOfEntrance" : "PT  H  M  S",
-              "TimeOfGoingOut" : "PT  H  M  S",
-              "Deduction" : "5.00",
-              "AbsenceType" : "0100",
-              "AbsenceText" : "חופשה"
-            }
-          ]
-        },
-        "ApproveAbsenceNav" : {
-          "results" : [
+        "Trriger2" : "0.00"
+    },
+    {
+      "IvCaller" : "1",
+        "TriggerText1" : "",
+        "IvUserName" : "",
+        "IvPersonnelNumber" : "00232256",
+        "IvPeriod" : "202603",
+        "IvScreenType" : "0",
+        "IvIncludeCancelledRecord" : "",
+        "IvEcecutePt60" : "",
+        "Trriger2" : "0.00"
+    },
+    {
+      "IvCaller" : "1",
+        "TriggerText1" : "",
+        "IvUserName" : "",
+        "IvPersonnelNumber" : "00232256",
+        "IvPeriod" : "202604",
+        "IvScreenType" : "0",
+        "IvIncludeCancelledRecord" : "",
+        "IvEcecutePt60" : "",
+        "Trriger2" : "0.00"
 
-          ]
-        },
-        "TitleDataNav" : {
-          "results" : [
-            {
-              "__metadata" : {
-                "id" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/TitleDataSet('%D7%A0%D7%98%D7%A2%20%D7%93%D7%95%D7%93')",
-                "uri" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/TitleDataSet('%D7%A0%D7%98%D7%A2%20%D7%93%D7%95%D7%93')",
-                "type" : "Z_PRESENCE_SRV.TitleData"
-              },
-              "Name" : "נטע דוד",
-              "PersonaNumber" : "00142711",
-              "EmployeApproval" : "",
-              "ManagerApproval" : "",
-              "AdminApproval" : "",
-              "ApprovalEmployeeId" : "00000000",
-              "ApprovalEmployeeName" : "",
-              "ApprovalEmployeeDate" : "",
-              "ApprovalManagerId" : "00000000",
-              "ApprovalManagerName" : "",
-              "ApprovalMabagerDate" : "",
-              "ApprovalAdminId" : "00000000",
-              "ApprovalAdminName" : "",
-              "ApprovalAdminDate" : "",
-              "PersonalArea" : "0010",
-              "PersonalAreaName" : "קצינים",
-              "PersonalSubarea" : "1001",
-              "PersonalSubareaName" : "קצונה זוטרה",
-              "EmployeeGroup" : "1",
-              "EmployeeGroupName" : "סוהרים",
-              "EmployeeSubgroup" : "02",
-              "EmployeeSubgroupName" : "סוהר קבע",
-              "CityName" : "0170",
-              "TimeIdNumber" : "00142711",
-              "MangId" : "00168468",
-              "MangName" : "גופרמן אולג",
-              "MashaId" : "00193086",
-              "MashaName" : "ויצמן אנה",
-              "WorkSchedule" : "DYN 9",
-              "WorkScheduleName" : "סוהר עובד יום",
-              "EmploymentPercentag" : "100.00",
-              "Email" : "",
-              "ChangeOpen" : "1",
-              "EmployeeType" : "",
-              "MontheFullyReported" : "",
-              "MonthlyDataExist" : "",
-              "NoPrevMonthMissingEmp" : "X",
-              "NoPrevMonthMissingMeng" : "X",
-              "NoPrevMonthMissingMasha" : "X",
-              "NoPrevMonthDocsMissing" : "X",
-              "Trriger1" : "0.00",
-              "TrrigerText1" : "",
-              "Trriger2" : "0.00",
-              "TrrigerText2" : "",
-              "Trriger3" : "0.00",
-              "TrrigerText3" : "",
-              "Trriger4" : "0.00",
-              "TrrigerText4" : "",
-              "Trriger5" : "0.00",
-              "TrrigerText5" : "",
-              "IditinalIndicator" : "",
-              "ImgEmp" : "data:image/jpeg;base64,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"
-            }
-          ]
-        },
-        "BalanceNav" : {
-          "__deferred" : {
-            "uri" : "https://DEVSAPHRAPP01.ips.gov.il:4300/sap/opu/odata/sap/Z_PRESENCE_SRV/GetInfoEmpSet('')/BalanceNav"
-          }
-        }
-      }
+    },
+    {
+      "IvCaller" : "1",
+        "TriggerText1" : "",
+        "IvUserName" : "",
+        "IvPersonnelNumber" : "00232256",
+        "IvPeriod" : "202605",
+        "IvScreenType" : "0",
+        "IvIncludeCancelledRecord" : "",
+        "IvEcecutePt60" : "",
+        "Trriger2" : "0.00"
+
+    }           
+
     ]
-  }
-}

@@ -14,7 +14,7 @@
                 <VBox id="fullNameTitleHbox" class="fullNameTitleHbox">
                     <Text id="fullNameTitle" class="fullNameTitle" text="{i18n>name}" />
                 </VBox>
-                 <!-- FULL NAME VALUE -->
+                <!-- FULL NAME VALUE -->
                 <VBox id="fullNameValueHbox" class="fullNameValueVBox">
                     <Text id="fullNameValue" class="fullNameValue" text="{EmpDetails>/0/fullName}" />
                 </VBox>

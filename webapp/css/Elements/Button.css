@@ -49,3 +49,11 @@
     .MobileMoveableButton.sapMBtn:focus-visible>.sapMFocusable:not(.sapMBadgeIndicator)::before, html.sap-desktop .sapMBtn:focus>.sapMFocusable:not(.sapMBadgeIndicator)::before{
         border: none;
     }
+
+
+    .MobileFlatButton .sapMBtnInner{
+        height: 0.3rem;
+    }
+    .MobileFlatButton.sapMBtn{
+        height: 0;
+    }

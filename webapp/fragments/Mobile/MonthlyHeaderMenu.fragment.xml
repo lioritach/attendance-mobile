@@ -1,0 +1,54 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover
+		class="MobilePopover"
+		showHeader="false"
+		placement="Bottom">
+		<List inset="false" 
+                mode="SingleSelectMaster" 
+                selectionChange="onMenuItemPress"
+                class="sapUiMediumMarginTop">
+
+                <StandardListItem
+				class="MobileActionMenuRow"
+                    title="{i18n>MonthlyRemark}"
+                    icon="sap-icon://text-align-justified"
+                    iconDensityAware="false">
+                    <customData>
+                        <core:CustomData key="headerAction" value="monthlyRemark"/>
+                    </customData>
+                </StandardListItem>
+
+                <StandardListItem
+				class="MobileActionMenuRow"
+                    title="{i18n>AbsenceReport}"
+                    icon="../css/images/CalendarClose.svg"
+                    iconDensityAware="false">
+                    <customData>
+                        <core:CustomData key="headerAction" value="AbsenceReport"/>
+                    </customData>
+                </StandardListItem>
+
+                <StandardListItem
+				class="MobileActionMenuRow"
+                    title="{i18n>MyBalances}"
+                    icon="../css/images/CalendarPlus.svg"
+                    iconDensityAware="false">
+                    <customData>
+                        <core:CustomData key="headerAction" value="AbsenceReport"/>
+                    </customData>
+                </StandardListItem>
+                <StandardListItem
+				class="MobileActionMenuRow"
+                    title="{i18n>Download}"
+                    icon="sap-icon://download"
+                    iconDensityAware="false">
+                    <customData>
+                        <core:CustomData key="headerAction" value="MonthlyDownload"/>
+                    </customData>
+                </StandardListItem>
+                
+            </List>
+	</Popover>
+</core:FragmentDefinition>

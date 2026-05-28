@@ -4,8 +4,9 @@ sap.ui.define(
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "sap/ui/core/Fragment",
+    "../model/formatter"
   ],
-  function (BaseController, Controller, JSONModel, Fragment) {
+  function (BaseController, Controller, JSONModel, Fragment, formatter) {
     "use strict";
 
     return BaseController.extend(
@@ -37,33 +38,50 @@ sap.ui.define(
             greeting: greeting,
             navigation: [],
             ReasonsList: [],
+            Entries: [],
             DailyReport: {"Remark": "", 
                           "RemarkDef": this.oBundle.getText("DailyRemark"),
                           "Reason": "", 
                           "ReasonDef": this.oBundle.getText("DailyReasonSelect"),
-                          "Approve": false}
+                          "Approve": false},
+            MonthlyReport: {"Attendance": [],
+                          "AttendanceTotals":{},
+                          "AttFilter": [{"key": 1, "text": this.oBundle.getText("MyReports")},
+                                        {"key": 2, "text": this.oBundle.getText("Errors"), "count": 0},
+                                        {"key": 3, "text": this.oBundle.getText("MyAbcenses"), "count": 0}],
+                          "Sort": false,
+                          "ShowTotalPanel": false,                                        
+                          "Approve": false},
+            AnsenceReport: {"Reason": "",
+                            "ReasonDef": this.oBundle.getText("AbsenceReasonSelect"),
+                            "Absence": {"ReportHours" : false,
+                                        "ReportFullDays" : false,
+                                        "CompleteDay" : false,
+                                        "PeriodReport" : false,
+                                        "ManagerApprove" : false,
+                                        "AdministratorApprove" : false,
+                                        "AddFile" : false,
+                                        "ReportComment" : false,
+                                        "AdditionalAbsenceData" : false},
+                            "Period": null,
+                            "PeriodDef": this.oBundle.getText("AbsencePeriod"),
+                            "Hours": "",
+                            "HoursDef": this.oBundle.getText("AbsenceHours"),
+                            "Attachment": {},
+                            "AttachmentDef": this.oBundle.getText("AbsenceAttachment"),
+                            "Remark": "",
+                            "RemarkDef": this.oBundle.getText("DailyRemark"),
+                            
+                            "Approve": false},              
+            WorkArrangement: {"Month": true,
+                              "Week": false}                                        
           });
 
           this.getView().setModel(oModel, "clockModel");
           this.getView().getModel("clockModel").refresh(false);
-          this.loadFragments(this, "MobileMainScreen", this._Page);
 
-          var model = this.getOwnerComponent().getModel();
-          model.read("/GetReasonsSet", {
-            success: function(oData){
-              oModel.setProperty("/ReasonsList", oData.results);
-            },
-            error: function(oEvent){debugger;}
-          });
-          model.read("/GetInfoEmpSet", {
-            urlParameters: {
-              "$expand": "ApproveAbsenceNav,ApproveIlnesNav,MonthNav,TitleDataNav,AttAbsNav"
-            },
-            success: function(oData){
-              oModel.setProperty("/Employee", oData.results[0].TitleDataNav.results[0]);
-            },
-            error: function(oEvent){debugger;}
-          });
+          this.MobInitData();
+          
           
         },
 
@@ -334,9 +352,35 @@ sap.ui.define(
 
         onMenuItemPress: function (oEvent) {
           oEvent.getSource().removeSelections();
-          const sRoute = oEvent.getParameter("listItem").data("route");
 
-          this.loadFragments(this, sRoute, this._Page);
+          var oModel = this.getView().getModel("clockModel");
+          var sRoute = oEvent.getParameter("listItem").data("route");
+          if (sRoute){
+            this.loadFragments(this, sRoute, this._Page);
+          }
+          sRoute = oEvent.getParameter("listItem").data("itemAction");
+          if (sRoute){
+            var popover = oEvent.getParameter("listItem").getParent().getParent();
+            if (popover){
+              var item = popover._oOpenBy.getParent().getBindingContext("clockModel").getObject();
+              popover.close();
+              oModel.setProperty("/DailyItem", item);
+              var editPath = popover._oOpenBy.getParent().getBindingContext("clockModel").sPath;
+              switch(sRoute){
+                case "EditMonthlyEntrie":
+                  item.Editable = true;
+                  oModel.setProperty(editPath, item);
+                  oModel.refresh(false);
+                  break;
+                case "DeleteMonthlyEntrie":
+                  break;
+                case "ViewMonthlyEntrie":
+                  this.OpenDialogScreen.call(this, "DailySummaryDetails");
+                  break;
+
+              }
+            }
+          }
           //const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
           //oRouter.navTo(sRoute);
 
@@ -374,12 +418,95 @@ sap.ui.define(
 //      `--------------'
 //      {__|""|_______'-
 //      `---------------'        
+        MobInitData: function(){
+          var oModel = this.getView().getModel("clockModel");
+          this.loadFragments(this, "MobileMainScreen", this._Page);
+
+          var model = this.getOwnerComponent().getModel();
+          model.read("/GetReasonsSet", {
+            success: function(oData){
+              oModel.setProperty("/ReasonsList", oData.results);
+            },
+            error: function(oEvent){debugger;}
+          });
+          var currPeriod = sap.ui.core.format.DateFormat.getInstance({pattern: "yyyyMM", calendarType: 'Gregorian'}).format(new Date());
+          this.MobReadAttendanceData(currPeriod);
+        },
+
+        MobReadAttendanceData: function(iPeriod){
+          var oModel = this.getView().getModel("clockModel");
+          var model = this.getOwnerComponent().getModel();
+
+          model.read("/GetInfoEmpSet", {
+            urlParameters: {
+              "$expand": "ApproveAbsenceNav,ApproveIlnesNav,MonthNav,TitleDataNav,AttAbsNav"
+            },
+            filters: [new sap.ui.model.Filter("IvPeriod", "EQ", iPeriod)],
+            success: function(oData){
+              var employee = oData.results[0].TitleDataNav.results[0];
+              employee.FirstName = employee.Name.substring(0, employee.Name.indexOf(' ')); 
+              employee.LastName = employee.Name.substring(employee.Name.indexOf(' ') + 1); 
+              oModel.setProperty("/Employee", employee);
+
+              var att = [];
+              var totalErrors = 0;
+              var totalAbsence = 0;
+              for (var i = 0; i < oData.results[0].AttAbsNav.results.length; i++){
+                var dailyItem = structuredClone(oData.results[0].AttAbsNav.results[i]);
+                
+                if (oData.results[0].AttAbsNav.results[i].Datum === null){
+                  oModel.setProperty("/MonthlyReport/AttendanceTotals", dailyItem);
+                }else{
+                  dailyItem.Error = false;
+                  dailyItem.Absence = false;
+                  dailyItem.Editable = false;
+                  if (dailyItem.Trriger1 !== "0.00"){
+                    dailyItem.Error = true;
+                    totalErrors++;
+                  }
+                  if (att.length > 0 && att[att.length - 1].Datum.getDate() === dailyItem.Datum.getDate()){
+                    att[att.length - 1].Entries.push(dailyItem);
+                  }else{
+                    var flatItem = structuredClone(dailyItem);
+                    flatItem.Entries = [];
+                    flatItem.Entries.push(dailyItem);
+                    att.push(flatItem);
+                  }
+                }
+              }
+              oModel.setProperty("/MonthlyReport/Attendance", att);
+              oModel.setProperty("/MonthlyReport/AttFilter/1/count", totalErrors);
+              oModel.setProperty("/MonthlyReport/AttFilter/2/count", totalAbsence);
+              oModel.refresh(false);
+            },
+            error: function(oEvent){debugger;}
+          });
+        },
+
+        MobOnMonthChange: function(oEvent){
+          var that = this;
+          var picker = new sap.m.DatePicker({
+            displayFormat: "yyyyMM",
+            valueFormat: "yyyyMM",
+            change: function(oEvent){
+              var period = oEvent.getParameter("value");
+              if (period !== ""){
+                that.MobReadAttendanceData(period);
+              }
+            }
+          });
+          
+          picker.openBy(oEvent.getSource());
+          picker._oPopup.addStyleClass("MobileDetailsDialog");
+          picker._oPopup._oCloseButton.addStyleClass("MobileButtonMenu");
+          picker._oPopup._oControl._header.addStyleClass("MobileCalendarDialogBody")
+          picker._oCalendar.addStyleClass("MobileCalendarMonth")
+        },
 
         MobClockPress: function(oEvent){
           oEvent.getSource().removeSelections();
 
-          
-
+  
           var oModel = this.getView().getModel("clockModel");
           if (oModel.getProperty("/showEntryScreen")){
             var entry = true;
@@ -414,11 +541,12 @@ sap.ui.define(
         },
         MobReasonSelect: function(oEvent){
           //oEvent.getSource().removeSelections();
-
+          
           var item = oEvent.getParameter("listItem").getBindingContext("clockModel").getObject();
           var oModel = this.getView().getModel("clockModel");
           oModel.setProperty("/DailyReport/Reason", item.Code);
           oEvent.getSource().getParent().getParent().setExpanded(false);
+          oEvent.getSource().getParent().getParent().setHeaderText(item.TextCode);
           if (oModel.getProperty("/DailyReport/Reason") !== "" && oModel.getProperty("/DailyReport/Remark") !== ""){
             oModel.setProperty("/DailyReport/Approve", true);
           }
@@ -428,13 +556,8 @@ sap.ui.define(
           if (oModel.getProperty("/DailyReport/Reason") !== "" && oModel.getProperty("/DailyReport/Remark") !== ""){
             oModel.setProperty("/DailyReport/Approve", true);
           }
-          //debugger;
         },
-        MobExpandPanelRemark: function(oEvent){
-          if (!oEvent.getParameter("expand") && oEvent.getSource().getContent()[0].getValue() !== ""){
-            oEvent.getSource().setHeaderText(oEvent.getSource().getContent()[0].getValue());
-          }
-        },
+        
         MobDailyApprove: function(oEvent){
           var oModel = this.getView().getModel("clockModel");
 
@@ -443,9 +566,71 @@ sap.ui.define(
           oModel.setProperty("/DailyReport/Reason", "");
           oModel.setProperty("/DailyReport/Remark", "");
           oModel.setProperty("/DailyReport/RemarkDef", this.oBundle.getText("DailyRemark"));
+          oModel.setProperty("/DailyReport/ReasonDef", this.oBundle.getText("DailyReasonSelect"));
           oModel.refresh(false);
 
           this.onBack();
+        },
+        MobMonthlyAttendListFilter: function(oEvent){
+          var aFilters = [];
+          switch (oEvent.getParameter("selectedItem").getKey()){
+            case "1":
+              break;
+            case "2":
+              aFilters.push(new sap.ui.model.Filter("Error", "EQ", true));
+              break;
+            case "3":
+              aFilters.push(new sap.ui.model.Filter("Absence", "EQ", true));
+              break;    
+          }
+          oEvent.getSource().getParent().getParent().getBinding("items").filter(aFilters);
+        },
+        MobMonthlyAttendListSort: function(oEvent){
+          var oModel = this.getView().getModel("clockModel");
+          var sort = !oModel.getProperty("/MonthlyReport/Sort");
+          oEvent.getSource().getParent().getParent().getBinding("items").sort(new sap.ui.model.Sorter("Datum", sort));
+          oModel.setProperty("/MonthlyReport/Sort", sort);
+        },
+        MobOnMonthlyReportDay: function(oEvent){
+          oEvent.getSource().removeSelections();
+          var entries = oEvent.getParameter("listItem").getBindingContext("clockModel").getObject().Entries;
+          if (entries.length){
+            this.getView().getModel("clockModel").setProperty("/Entries", entries);
+            this.getView().getModel("clockModel").refresh(false);
+            this.MobOpenEntriesDetails();
+          }
+        },
+        MobMonthlyReasonSelect: function(oEvent){
+          var item = oEvent.getParameter("listItem").getBindingContext("clockModel").getObject();
+          var oModel = this.getView().getModel("clockModel");
+          oModel.setProperty("/AnsenceReport/Reason", item.Code);
+          oModel.setProperty("/AnsenceReport/Absence", item);
+          oEvent.getSource().getParent().getParent().setExpanded(false);
+          oEvent.getSource().getParent().getParent().setHeaderText(item.TextCode);
+          if (oModel.getProperty("/AnsenceReport/Reason") !== "" && oModel.getProperty("/AnsenceReport/Remark") !== ""){
+            oModel.setProperty("/AnsenceReport/Approve", true);
+          }
+        },
+        MobOpenEntriesDetails: async function () {
+          this.OpenDialogScreen.call(this, "EntriesDetails");
+        },
+        
+        MobOnEntriesDetailsMenu: function(oEvent){
+          this.OpenActionMenu("EntriesDetailsMenu", oEvent.getSource());
+        },
+        MobOnMonthlyItemMenu: function(oEvent){
+          this.OpenActionMenu("MonthlyItemMenu", oEvent.getSource());
+        },
+        MobMonthlyAttendActions: function(oEvent){
+          this.OpenActionMenu("MonthlyHeaderMenu", oEvent.getSource());
+        },
+        MobOnWorkArrangementSwitch: function(oEvent){
+          var key = oEvent.getParameter("item").getKey();
+        },
+        MobToMontlyReportTotalanel: function(oEvent){
+          var oModel = this.getView().getModel("clockModel");
+          oModel.setProperty("/MonthlyReport/ShowTotalPanel", !oModel.getProperty("/MonthlyReport/ShowTotalPanel"));
+          oModel.refresh(false);
         }
       },
     );

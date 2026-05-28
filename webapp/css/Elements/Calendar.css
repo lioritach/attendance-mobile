@@ -2,9 +2,80 @@
     font-family: Rubik;
     font-weight: 400;
 }
+.MobileCalendar.sapUiCal{
+    padding: 0rem 0.5rem 0 0.5rem;
+}
+.MobileCalendar.sapUiCal .sapUiCalMonthView, .sapUiCal .sapUiCalRow {
+    padding-bottom: 0;
+}
 .MobileCalendar .sapUiCalHead>button,
 .MobileCalendar .sapUiCalCancel {
     font-size: 1rem;
     font-family: 'Rubik';
     font-weight: 600;
+}
+
+.MobileCalendar .sapUiCalItem {
+    width: 2.2rem;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    border-radius: .5rem;
+}
+
+/* Shrink the month/year header section */
+.MobileCalendar .sapUiCalHead {
+    padding: 0;
+}
+
+/* Make navigation buttons and titles smaller */
+.MobileCalendar .sapUiCalHead > .sapUiCalHeadB {
+    font-size: 0.875rem;
+}
+
+/* Shrink the week days (e.g., Mo, Tu, We) indicators */
+.MobileCalendar .sapUiCalWDay {
+    height: 1.5rem;
+    line-height: 1.8rem;
+    font-size: 0.75rem;
+}
+.MobileCalendar .sapUiCalItemSel {
+    color: #fff;
+    background-color: #203857;
+}
+.MobileCalendar  .sapUiCalItemNow>.sapUiCalItemText {
+    border: .125rem solid #203857;
+    border-radius: .5rem;
+    line-height: 2.2rem;
+}
+
+.MobileCalendarDialogBody{
+    background-color: #E7F3FF !important;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    padding-top: 1rem;
+    min-height: 60vh;
+}
+.MobileCalendarDialogBody .sapMBarRight{
+    align-items: self-start;
+    height: auto;
+    width: 5rem;
+    justify-content: flex-start;
+}
+.MobileCalendarMonth, 
+.MobileCalendarMonth .sapUiCalHead,
+.MobileCalendarMonth .sapUiCalHead>button,
+.MobileCalendarMonth .sapUiCalCancel {
+    background-color: #E7F3FF;
+    font-family: Rubik;
+    font-weight: 500;
+}
+.MobileCalendarMonth .sapUiCalContent>.sapUiCalMonthPicker,
+.MobileCalendarMonth .sapUiCalContent>.sapUiCalYearPicker{
+    background-color: #E7F3FF;
+    padding: unset;
+}
+.MobileCalendarMonth .sapUiCalItem{
+    border-radius: .5rem;
+    border: 3px solid #E7F3FF;
+    background-color: white;
 }

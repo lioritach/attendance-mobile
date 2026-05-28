@@ -1,0 +1,74 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    core:require="{formatter: 'attendanceshabas/attendanceshabas/model/formatter'}">
+	<Dialog
+		class="MobileDetailsDialog"
+		stretch="true"
+		showHeader="false">
+		<VBox class="MobileDetailsDialogBody"
+			height="100%">
+			<HBox class="MobileMenuFooter" justifyContent="SpaceBetween" alignItems="Center">
+				<VBox height="100%">
+					<HBox alignItems="Center">
+						<Text class="MobileLabel2TextBold" 
+							text="{i18n>MovementsSummary}"/>
+						<Text class="MobileLabel2TextBold sapUiMediumMarginBeginEnd"
+							text="{ path: 'clockModel>/Entries/0/Datum',
+				                    type: 'sap.ui.model.type.Date',
+				                    formatOptions: {pattern: 'dd.MM.yyyy'}}"/>
+					</HBox>
+				</VBox>
+				<Button
+                class="MobileButtonMenu"
+                icon="sap-icon://decline"
+                press="CloseDialogScreen"/> 
+			</HBox>
+
+			<VBox>
+				<List items="{clockModel>/Entries}">
+					<CustomListItem class="MobileMonthRow">
+						<HBox justifyContent="SpaceBetween" class="MobileMonthRowDayItem">
+							<VBox>
+								<Label text="{i18n>enter}" 
+                                visible="{path: 'clockModel>TimeOfEntrance', formatter: 'formatter.isVisible'}" 
+                                class="MobileLabelTextBold sapUiTinyMarginEnd"/>
+                            	<Label text="{path: 'clockModel>TimeOfEntrance', formatter: 'formatter.stringToHours'}" 
+								visible="{= ${clockModel>Editable}? false:true}"
+								class="MobileLabelText sapUiTinyMarginEnd"/>
+								<TimePicker value="{path: 'clockModel>TimeOfEntrance', formatter: 'formatter.stringToHours'}" 
+								valueFormat="HH:mm"
+								displayFormat="HH:mm"
+								maskMode="On"
+								visible="{clockModel>Editable}"
+								class="MobileLabelText sapUiTinyMarginEnd"/>
+							</VBox>
+							<VBox>
+								<Label text="{i18n>exit}" 
+                                visible="{path: 'clockModel>TimeOfGoingOut', formatter: 'formatter.isVisible'}" 
+                                class="MobileLabelTextBold sapUiTinyMarginEnd"/>
+                                <Label text="{path: 'clockModel>TimeOfGoingOut', formatter: 'formatter.stringToHours'}" 
+								visible="{= ${clockModel>Editable}? false:true}"
+								class="MobileLabelText"/>
+								<TimePicker value="{path: 'clockModel>TimeOfGoingOut', formatter: 'formatter.stringToHours'}" 
+								valueFormat="HH:mm"
+								displayFormat="HH:mm"
+								maskMode="On"
+								visible="{clockModel>Editable}"
+								class="MobileLabelText sapUiTinyMarginEnd"/>								
+							</VBox>
+							<VBox visible="{path: 'clockModel>TotalHours', formatter: 'formatter.isVisible'}">
+								<Label text="{i18n>totalHours}" class="MobileLabelTextBold sapUiTinyMarginEnd"/>
+                                <Label text="{path: 'clockModel>TotalHoursDec'}" class="MobileLabelTextBold"/>
+							</VBox>
+							<VBox alignContent="Center" height="100%">
+								<Button icon="sap-icon://overflow" type="Transparent" press=".MobOnEntriesDetailsMenu"/> 
+							</VBox>
+						</HBox>
+					</CustomListItem>
+				</List>
+				
+			</VBox>
+		</VBox>
+	</Dialog>
+</core:FragmentDefinition>

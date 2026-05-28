@@ -1,6 +1,8 @@
 <core:FragmentDefinition
     xmlns="sap.m"
-    xmlns:core="sap.ui.core">
+    xmlns:core="sap.ui.core"
+    xmlns:cust="attendanceshabas.attendanceshabas.controller"
+    core:require="{formatter: 'attendanceshabas/attendanceshabas/model/formatter'}">
     <VBox class="mainContainer"> 
         <HBox
             width="100%"
@@ -9,13 +11,130 @@
                 <Button
                     class="MobileButtonMenu"
                     icon="sap-icon://navigation-left-arrow"
-                    press="onBack"/>   
+                    press=".onBack"/>   
                 <VBox width="100%">       
                     <Label text="{i18n>MonthlyAttendance}" class="MobileMediumText sapUiMediumMarginBeginEnd"/>
                 </VBox>
                 <Button
                     class="MobileButtonMenu"
-                    icon="../css/images/CalendarAtt.svg"/>   
-            </HBox>         
+                    icon="../css/images/CalendarAtt.svg"
+                    iconDensityAware="false"
+                    press=".MobOnMonthChange"/>   
+        </HBox>   
+
+        <VBox height="100%">
+            <ScrollContainer
+            height="100%"
+            width="100%"
+            horizontal="false"
+            vertical="true"
+            focusable="true">
+            <layoutData>
+                <FlexItemData growFactor="1" />
+            </layoutData>
+                <List inset="false" 
+                mode="SingleSelectMaster" 
+                items="{path: 'clockModel>/MonthlyReport/Attendance', templateShareable: false}"
+                noData=" "
+                selectionChange=".MobOnMonthlyReportDay">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <cust:SelectM
+                            width="50%"
+                            showSecondaryValues="true"
+                            columnRatio="3:1"
+					        items="{clockModel>/MonthlyReport/AttFilter}"
+                            selectionChange=".MobMonthlyAttendListFilter"
+                            class="MobileSelect">
+                                <core:ListItem key="{clockModel>key}" text="{clockModel>text}" additionalText="{clockModel>count}"/>
+                            </cust:SelectM>
+                            <ToolbarSpacer />
+                            <Button
+                                icon="sap-icon://sorting-ranking"
+                                class="MobileButtonMenu"
+                                press=".MobMonthlyAttendListSort"/>
+                            <Button
+                                icon="sap-icon://overflow"
+                                class="MobileButtonMenu"
+                                press=".MobMonthlyAttendActions"/>    
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <CustomListItem class="MobileMonthRow">
+                        <VBox>
+                            <HBox justifyContent="SpaceBetween" alignItems="Center" class="MobileMonthRowDayItemHeader">
+                                <Label text="{clockModel>Weekday} { path: 'clockModel>Datum',
+				                                type: 'sap.ui.model.type.Date',
+				                                formatOptions: {pattern: 'dd.MM.yyyy'}}" class="MobileLabelTextBold"/>
+                                <Button icon="sap-icon://overflow" type="Transparent" press=".MobOnMonthlyItemMenu"/>                
+                            </HBox>
+
+
+                            
+                            <List items="{path: 'clockModel>Entries', templateShareable: false}">
+                                <CustomListItem class="MobileEntryRow">
+                                    <HBox justifyContent="SpaceBetween" alignItems="Center" class="MobileMonthRowDayItem">
+                                    <HBox>
+                                        <Label text="{i18n>enter}" 
+                                            visible="{path: 'clockModel>TimeOfEntrance', formatter: 'formatter.isVisible'}" 
+                                            class="MobileLabelText sapUiTinyMarginEnd"/>
+                                        <Label text="{path: 'clockModel>TimeOfEntrance', formatter: 'formatter.stringToHours'}" class="MobileLabelText sapUiTinyMarginEnd"/>
+                                        <Label text="{i18n>exit}" 
+                                            visible="{path: 'clockModel>TimeOfGoingOut', formatter: 'formatter.isVisible'}" 
+                                            class="MobileLabelText sapUiTinyMarginEnd"/>
+                                        <Label text="{path: 'clockModel>TimeOfGoingOut', formatter: 'formatter.stringToHours'}" class="MobileLabelText"/>
+
+                                    </HBox>
+                                    <HBox justifyContent="End" visible="{path: 'clockModel>TotalHours', formatter: 'formatter.isVisible'}" >
+                                        <Label text="{i18n>totalHours}" class="MobileLabelText sapUiTinyMarginEnd"/>
+                                        <Label text="{path: 'clockModel>TotalHoursDec'}" class="MobileLabelTextBold"/>
+                                    </HBox>
+                                    </HBox>
+                                </CustomListItem>
+                            </List>
+
+                            <HBox justifyContent="SpaceBetween" alignItems="Center" class="MobileMonthRowDayItem">
+                                <Label text="{clockModel>CommentOutput}" class="MobileLabelText"/>
+                            </HBox>                          
+                        </VBox>
+                    </CustomListItem>
+                </List>
+            </ScrollContainer>
+        </VBox>
+
+        <VBox class="MobileFooterBox">
+            <HBox height=".5rem" width="100%" justifyContent="Center" alignItems="Start">
+                    <Button class="MobileFlatButton" press=".MobToMontlyReportTotalanel"/>
+                </HBox>
+            <HBox class="MobileFooterBodySmall" renderType="Bare" justifyContent="SpaceBetween" alignItems="Center">
+                <Label text="{i18n>Total} {clockModel>/MonthlyReport/AttendanceTotals/TotalHoursDec}" class="footer-text"/>
+                
+                <Button text="{i18n>ApproveAttend}" 
+                press=".MobMonthlyApprove"
+                class="MobileApproveButton"
+                enabled="{clockModel>/MonthlyReport/Approve}"/>
+            </HBox>  
+            <VBox visible="{clockModel>/MonthlyReport/ShowTotalPanel}" class="MobileTotalPanel">
+                <VBox>
+                    <Text text="{i18n>HoursExplanation}" class="footer-text"/>
+                </VBox>
+                <HBox class="MobileTotalPanelDivider sapUiSmallMarginTop"/>
+                <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginTop">
+                    <Label text="{i18n>PlannedWorkinHours}" class="MobileSmallFooterText"/>
+                    <Text text="{clockModel>/MonthlyReport/AttendanceTotals/PlannedWorkinHours}" class="MobileSmallFooterText"/>
+                </HBox>
+                <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginTop">
+                    <Label text="{i18n>BrakeHours}" class="MobileSmallFooterText"/>
+                    <Text text="{clockModel>/MonthlyReport/AttendanceTotals/BrakeHours}" class="MobileSmallFooterText"/>
+                </HBox>
+                <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginTop">
+                    <Label text="{i18n>MissingHours}" class="MobileSmallFooterText"/>
+                    <Text text="{clockModel>/MonthlyReport/AttendanceTotals/MissingHours}" class="MobileSmallFooterText"/>
+                </HBox>
+                <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginTop">
+                    <Label text="{i18n>ExtraHours}" class="MobileSmallFooterText"/>
+                    <Text text="{clockModel>/MonthlyReport/AttendanceTotals/ExtraHours}" class="MobileSmallFooterText"/>
+                </HBox>
+            </VBox> 
+        </VBox>              
     </VBox>
 </core:FragmentDefinition>
