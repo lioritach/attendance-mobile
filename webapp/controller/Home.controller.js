@@ -652,6 +652,9 @@ sap.ui.define(
           var oModel = this.getView().getModel("clockModel");
           oModel.setProperty("/MonthlyReport/ShowTotalPanel", !oModel.getProperty("/MonthlyReport/ShowTotalPanel"));
           oModel.refresh(false);
+        },
+        MobAbsenceCalendarSelect: function(oEvent){
+          
         }
       },
     );

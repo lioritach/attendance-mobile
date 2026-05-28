@@ -58,7 +58,7 @@
                     showWeekNumbers="false"
                     intervalSelection="{clockModel>/AnsenceReport/Absence/PeriodReport}"
                     class="MobileCalendar"/>
-                    <HBox height="3rem" justifyContent="SpaceBetween" alignItems="Center">
+                    <!-- <HBox height="3rem" justifyContent="SpaceBetween" alignItems="Center">
                         <Button text="{i18n>Clear}" 
                         press=".MobDailyApprove"
                         type="Transparent"
@@ -66,7 +66,7 @@
                         <Button text="{i18n>Approve}" 
                         press=".MobDailyApprove"
                         class="MobileApproveButton"/>                        
-                    </HBox>                       
+                    </HBox>       -->                 
                 </content>
             </Panel> 
 

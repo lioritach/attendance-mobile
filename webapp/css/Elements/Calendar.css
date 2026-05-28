@@ -38,12 +38,18 @@
     line-height: 1.8rem;
     font-size: 0.75rem;
 }
-.MobileCalendar .sapUiCalItemSel {
+.MobileCalendar .sapUiCalItemSel,
+.MobileCalendar .sapUiCalItem.sapUiCalItemSel:not(.sapUiCalItemSelBetween)  {
     color: #fff;
     background-color: #203857;
 }
-.MobileCalendar  .sapUiCalItemNow>.sapUiCalItemText {
-    border: .125rem solid #203857;
+.MobileCalendar .sapUiCalItemSelBetween .sapUiCalItemText, 
+.MobileCalendar .sapUiCalItemSelBetween.sapUiCalItemOtherMonth .sapUiCalItemText{
+    line-height: 2.2rem;
+}
+.MobileCalendar .sapUiCalItemNow>.sapUiCalItemText,
+.MobileCalendar .sapUiCalItem.sapUiCalItemNow {
+    border: 1px solid #203857;
     border-radius: .5rem;
     line-height: 2.2rem;
 }
@@ -53,7 +59,11 @@
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
     padding-top: 1rem;
-    min-height: 60vh;
+    box-shadow: unset !important;
+}
+.MobileCalendarDialogBody.sapMBar,
+.MobileCalendarDialogBody .sapMDialog > header:last-of-type .sapMIBar {
+    box-shadow: unset;
 }
 .MobileCalendarDialogBody .sapMBarRight{
     align-items: self-start;

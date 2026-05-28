@@ -16,10 +16,7 @@
                         icon="sap-icon://bell"
                         press="openNotifications"/>                        
             </HBox>
-            <HBox
-                justifyContent="Center"
-                height="100%"
-            >
+            <HBox justifyContent="Center" renderType="Bare" height="calc(100% - 10rem)">
                 <VBox justifyContent="Start" renderType="Bare">
                     <HBox
                         justifyContent="Center"
