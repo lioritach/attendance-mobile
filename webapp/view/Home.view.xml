@@ -7,6 +7,6 @@
     <Page
         showHeader="false" enableScrolling="false"
         class="mainPage">
-
+        <VBox id="messageBox" renderType="Bare" width="100%" class="MobileAbsoluteContainer"/>
     </Page>
 </mvc:View>

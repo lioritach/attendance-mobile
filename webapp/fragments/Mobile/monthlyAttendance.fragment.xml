@@ -92,8 +92,9 @@
                                 </CustomListItem>
                             </List>
 
-                            <HBox justifyContent="SpaceBetween" alignItems="Center" class="MobileMonthRowDayItem">
-                                <Label text="{clockModel>CommentOutput}" class="MobileLabelText"/>
+                            <HBox justifyContent="SpaceBetween" alignItems="Center" class="MobileMonthRowDayItem" 
+                            visible="{= ${clockModel>CommentOutput} === ''? false:true}">
+                                <Label text="{clockModel>CommentOutput}" class="MobileLabelTextEmphasize"/>
                             </HBox>                          
                         </VBox>
                     </CustomListItem>

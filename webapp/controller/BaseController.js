@@ -148,7 +148,6 @@ sap.ui.define(
                           break;
                       }
                     }
-                  //}
                 }
               }
             }
@@ -167,9 +166,14 @@ sap.ui.define(
             }
           }
           return contentList;
+        },
+        showMessage: function(message, type){
+          var strip = new sap.m.MessageStrip({text: message, type: type, showIcon: true, showCloseButton: true});
+          strip.addStyleClass("MobileMessageStrip");
+          this.getView().byId("messageBox").removeAllItems();
+          this.getView().byId("messageBox").addItem(strip);
+          this.getView().byId("messageBox").setVisible(true);
         }
-
-
       }
     );
   }

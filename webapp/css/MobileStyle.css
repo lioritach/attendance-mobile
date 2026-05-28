@@ -1,6 +1,7 @@
 @import url("Elements/Button.css");
 @import url("Elements/Calendar.css");
 @import url("Elements/Menu.css");
+@import url("Elements/MessageStrip.css");
 @import url("Elements/Panel.css");
 @import url("Elements/SegmentButton.css");
 @import url("Elements/Select.css");
@@ -215,6 +216,16 @@
         font-family: 'Rubik';
         font-weight: 500;
         color: #27292B;
+    }
+    .MobileLabelTextEmphasize{
+        font-size: .9rem;
+        font-family: 'Rubik';
+        font-weight: 400;
+        color: #27292B;
+        background: #E7F3FF;
+        border-radius: .5rem;
+        margin: .5rem;
+        padding: .5rem;
     }
     .MobileLabel2Text {
         font-size: 1.1rem;

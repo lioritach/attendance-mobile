@@ -46,6 +46,7 @@ sap.ui.define(
                           "Approve": false},
             MonthlyReport: {"Attendance": [],
                           "AttendanceTotals":{},
+                          "Balance": [],
                           "AttFilter": [{"key": 1, "text": this.oBundle.getText("MyReports")},
                                         {"key": 2, "text": this.oBundle.getText("Errors"), "count": 0},
                                         {"key": 3, "text": this.oBundle.getText("MyAbcenses"), "count": 0}],
@@ -439,7 +440,7 @@ sap.ui.define(
 
           model.read("/GetInfoEmpSet", {
             urlParameters: {
-              "$expand": "ApproveAbsenceNav,ApproveIlnesNav,MonthNav,TitleDataNav,AttAbsNav"
+              "$expand": "ApproveAbsenceNav,ApproveIlnesNav,MonthNav,TitleDataNav,AttAbsNav,BalanceNav"
             },
             filters: [new sap.ui.model.Filter("IvPeriod", "EQ", iPeriod)],
             success: function(oData){
@@ -449,6 +450,7 @@ sap.ui.define(
               oModel.setProperty("/Employee", employee);
 
               var att = [];
+              var balance = [];
               var totalErrors = 0;
               var totalAbsence = 0;
               for (var i = 0; i < oData.results[0].AttAbsNav.results.length; i++){
@@ -474,9 +476,24 @@ sap.ui.define(
                   }
                 }
               }
+
+              for (i = 0; i < oData.results[0].BalanceNav.results.length; i++){
+                var balanceItem = oData.results[0].BalanceNav.results[i];
+                if (balanceItem.Highlight){
+                  var headerBalance = structuredClone(balanceItem);
+                }else{
+                  balance.push({"Reason": balanceItem.Field1, 
+                            "Text1": headerBalance.Field2, "Value1": balanceItem.Field2,
+                            "Text2": headerBalance.Field3, "Value2": balanceItem.Field3,
+                            "Text3": headerBalance.Field4, "Value3": balanceItem.Field4,
+                            "Text4": headerBalance.Field5, "Value4": balanceItem.Field5,
+                            "Text5": headerBalance.Field6, "Value5": balanceItem.Field6});
+                }               
+              }
               oModel.setProperty("/MonthlyReport/Attendance", att);
               oModel.setProperty("/MonthlyReport/AttFilter/1/count", totalErrors);
               oModel.setProperty("/MonthlyReport/AttFilter/2/count", totalAbsence);
+              oModel.setProperty("/MonthlyReport/Balance", balance);
               oModel.refresh(false);
             },
             error: function(oEvent){debugger;}
@@ -510,8 +527,10 @@ sap.ui.define(
           var oModel = this.getView().getModel("clockModel");
           if (oModel.getProperty("/showEntryScreen")){
             var entry = true;
+            var event = "P10";
           }else{
             entry = false;
+            event = "P20";
           }
           const now = new Date();
           const sTime = now.toLocaleTimeString("he-IL", {
@@ -519,7 +538,9 @@ sap.ui.define(
             minute: "2-digit"
           });
           oModel.setProperty("/lastTime", sTime);      
-          oModel.setProperty("/isCheckedIn", true);  
+          oModel.setProperty("/isCheckedIn", true);
+
+          this.showMessage("Test111", "Warning");
 
           this.MobSwitchClockScreen();
         },

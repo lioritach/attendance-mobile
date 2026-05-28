@@ -15,8 +15,49 @@
         </HBox> 
 
         <VBox height="100%" class="sapUiContentPadding">
-            
-
+            <ScrollContainer
+                    height="100%"
+                    width="100%"
+                    horizontal="false"
+                    vertical="true"
+                    focusable="true">
+                <List inset="false" 
+                    mode="SingleSelectMaster" 
+                    items="{path: 'clockModel>/MonthlyReport/Balance', templateShareable: false}">
+                    <CustomListItem class="MobileReasonRow">
+                        <Panel 
+                        expandable="true" 
+                        headerText="{clockModel>Reason} | {clockModel>Value5}" 
+                        width="auto" 
+                        class="sapUiResponsiveMargin MobilePanel">                            
+                            <content>
+                                <VBox>
+                                    <HBox justifyContent="SpaceBetween" width="100%" class="sapUiSmallMarginTop">
+                                        <Text text="{clockModel>Text1}" class="MobileLabelText"/>
+                                        <Text text="{clockModel>Value1}" class="MobileLabelTextBold"/>
+                                    </HBox>
+                                    <HBox justifyContent="SpaceBetween" width="100%" class="sapUiSmallMarginTop">
+                                        <Text text="{clockModel>Text2}" class="MobileLabelText"/>
+                                        <Text text="{clockModel>Value2}" class="MobileLabelTextBold"/>
+                                    </HBox>
+                                    <HBox justifyContent="SpaceBetween" width="100%" class="sapUiSmallMarginTop">
+                                        <Text text="{clockModel>Text3}" class="MobileLabelText"/>
+                                        <Text text="{clockModel>Value3}" class="MobileLabelTextBold"/>
+                                    </HBox>
+                                    <HBox justifyContent="SpaceBetween" width="100%" class="sapUiSmallMarginTop">
+                                        <Text text="{clockModel>Text4}" class="MobileLabelText"/>
+                                        <Text text="{clockModel>Value4}" class="MobileLabelTextBold"/>
+                                    </HBox>
+                                    <HBox justifyContent="SpaceBetween" width="100%" class="sapUiSmallMarginTop">
+                                        <Text text="{clockModel>Text5}" class="MobileLabelText"/>
+                                        <Text text="{clockModel>Value5}" class="MobileLabelTextBold"/>
+                                    </HBox>
+                                </VBox>
+                            </content>
+                        </Panel>    
+                    </CustomListItem>
+                </List>    
+            </ScrollContainer>
         </VBox>
 
     </VBox>
